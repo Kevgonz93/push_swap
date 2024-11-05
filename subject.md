@@ -190,74 +190,62 @@ Para ilustrar el funcionamiento de algunas de estas instrucciones, vamos a orden
 ---
 
 Init a and b:
-2
-1
-3
-6
-5
-8
+2-
+1-
+3-
+6-
+5-
+8-
 \_ \_
-a b
-
----
+a-b
 
 Exec sa:
-1
-2
-3
-6
-5
-8
+1-
+2-
+3-
+6-
+5-
+8-
 \_ \_
-a b
-
----
+a-b
 
 Exec pb pb pb:
-6 3
-5 2
-8 1
+6-3
+5-2
+8-1
 \_ \_
-a b
-
----
+a-b
 
 Exec ra rb (equiv. to rr):
-5 2
-8 1
-6 3
+5-2
+8-1
+6-3
 \_ \_
-a b
-
----
+a-b
 
 Exec rra rrb (equiv. to rrr):
-6 3
-5 2
-8 1
+6-3
+5-2
+8-1
 \_ \_
-a b
-
----
+a-b
 
 Exec sa:
-5 3
-6 2
-8 1
+5-3
+6-2
+8-1
 \_ \_
-a b
-
----
+a-b
 
 Exec pa pa pa:
-1
-2
-3
-5
-6
-8
+1-
+2-
+3-
+5-
+6-
+8-
 \_ \_
-a b
+a-b
 
 ---
 
@@ -308,8 +296,6 @@ Tu programa deberá cumplir la siguientes normas:
 
 •En caso de error, deberá mostrar Error seguido de un “\n” en la salida de errores estándar. Algunos de los posibles errores son: argumentos que no son enteros, argumentos superiores a un número entero, y/o encontrar números duplicados.
 
----
-
 $>./push_swap 2 1 3 6 5 8
 sa
 pb
@@ -323,19 +309,13 @@ $>./push_swap 0 one 2 3
 Error
 $>
 
----
-
 Durante la evaluación tendrás a tu disposición un binario para verificar el correcto funcionamiento de tu programa. Funciona de la siguiente forma:
-
----
 
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 6
 $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 OK
 $>
-
----
 
 Si el programa checker_OS muestra "KO", implicará que tu programa push_swap utiliza una lista de instrucciones que no ordena los números.
 
@@ -401,8 +381,6 @@ Ejecuta las instrucciones de ordenación
 
 •En caso de error, deberás mostrar Error seguido de un ’\n’ en la stderr. Los errores incluyen, por ejemplo, algunos o todos los argumentos no son enteros, algunos o todos los argumentos son más grandes que un número entero, hay duplicados, una instrucción no existe y/o no tiene el formato correcto.
 
----
-
 $>./checker 3 2 1 0
 rra
 pb
@@ -420,8 +398,6 @@ Error
 $>./checker "" 1
 Error
 $>
-
----
 
 No tienes que clonar exactamente el comportamiento exacto del binario
 que te damos. Es obligatorio gestionar errores pero es decisión tuya
