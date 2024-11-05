@@ -187,67 +187,65 @@ terminado.
 
 Para ilustrar el funcionamiento de algunas de estas instrucciones, vamos a ordenar una lista de números aleatoria. En el siguiente ejempo, asumiremos que ambos stacks crecen por la derecha.
 
----
+• Ejemplo
 
-Init a and b:
-2-
-1-
-3-
-6-
-5-
-8-
-\_ \_
-a-b
+    Init a and b:
+    2-
+    1-
+    3-
+    6-
+    5-
+    8-
+    \_ \_
+    a-b
 
-Exec sa:
-1-
-2-
-3-
-6-
-5-
-8-
-\_ \_
-a-b
+    Exec sa:
+    1-
+    2-
+    3-
+    6-
+    5-
+    8-
+    \_ \_
+    a-b
 
-Exec pb pb pb:
-6-3
-5-2
-8-1
-\_ \_
-a-b
+    Exec pb pb pb:
+    6-3
+    5-2
+    8-1
+    \_ \_
+    a-b
 
-Exec ra rb (equiv. to rr):
-5-2
-8-1
-6-3
-\_ \_
-a-b
+    Exec ra rb (equiv. to rr):
+    5-2
+    8-1
+    6-3
+    \_ \_
+    a-b
 
-Exec rra rrb (equiv. to rrr):
-6-3
-5-2
-8-1
-\_ \_
-a-b
+    Exec rra rrb (equiv. to rrr):
+    6-3
+    5-2
+    8-1
+    \_ \_
+    a-b
 
-Exec sa:
-5-3
-6-2
-8-1
-\_ \_
-a-b
+    Exec sa:
+    5-3
+    6-2
+    8-1
+    \_ \_
+    a-b
 
-Exec pa pa pa:
-1-
-2-
-3-
-5-
-6-
-8-
-\_ \_
-a-b
-
----
+    Exec pa pa pa:
+    1-
+    2-
+    3-
+    5-
+    6-
+    8-
+    \_ \_
+    a-b
 
 Este ejemplo ordena los enteros de a en 12 instrucciones. ¿Puedes hacerlo mejor?
 
@@ -255,27 +253,27 @@ Este ejemplo ordena los enteros de a en 12 instrucciones. ¿Puedes hacerlo mejor
 
 ---
 
-Nombre de programa :
-push_swap
+    Nombre de programa :
+    push_swap
 
-Archivos a entregar :
-Makefile, \*.h, \_.c
+    Archivos a entregar :
+    Makefile, \*.h, \_.c
 
-Makefile :
-NAME, all, clean, fclean, re
+    Makefile :
+    NAME, all, clean, fclean, re
 
-Argumentos :
-stack a: una lista de números enteros
+    Argumentos :
+    stack a: una lista de números enteros
 
-Funciones autorizadas :
-• read, write, malloc, free, exit
-•ft_printf y cualquier función equivalente que hayas creado
+    Funciones autorizadas :
+    • read, write, malloc, free, exit
+    •ft_printf y cualquier función equivalente que hayas creado
 
-Se permite usar libft :
-Yes
+    Se permite usar libft :
+    Yes
 
-Descripción :
-Ordenar stacks
+    Descripción :
+    Ordenar stacks
 
 ---
 
@@ -296,26 +294,30 @@ Tu programa deberá cumplir la siguientes normas:
 
 •En caso de error, deberá mostrar Error seguido de un “\n” en la salida de errores estándar. Algunos de los posibles errores son: argumentos que no son enteros, argumentos superiores a un número entero, y/o encontrar números duplicados.
 
-$>./push_swap 2 1 3 6 5 8
-sa
-pb
-pb
-pb
-sa
-pa
-pa
-pa
-$>./push_swap 0 one 2 3
-Error
-$>
+• Ejemplo
+
+    $>./push_swap 2 1 3 6 5 8
+    sa
+    pb
+    pb
+    pb
+    sa
+    pa
+    pa
+    pa
+    $>./push_swap 0 one 2 3
+    Error
+    $>
 
 Durante la evaluación tendrás a tu disposición un binario para verificar el correcto funcionamiento de tu programa. Funciona de la siguiente forma:
 
-$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
-6
-$>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
-OK
-$>
+• Ejemplo
+
+    $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+    6
+    $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
+    OK
+    $>
 
 Si el programa checker_OS muestra "KO", implicará que tu programa push_swap utiliza una lista de instrucciones que no ordena los números.
 
@@ -344,31 +346,31 @@ el stack de forma correcta.
 
 La parte bonus no será evaluada si la parte obligatoria no está perfecta. Perfecta quiere decir que se ha completado la parte obligatoria y que funciona perfectamente, sin errores. En este proyecto esto implica validar todos las pruebas de rendimiento sin excepción. Si no has pasado todas las pruebas obligatorias, tu parte bonus no será evaluada.
 
-#### El programa “checker”
+### El programa “checker”
 
 ---
 
-Nombre de programa :
-checker
+    Nombre de programa :
+    checker
 
-Archivos a entregar :
-Makefile, \_.h, \_.c
+    Archivos a entregar :
+    Makefile, \_.h, \_.c
 
-Makefile :
-bonus
+    Makefile :
+    bonus
 
-Argumentos :
-stack a: una lista de números enteros
+    Argumentos :
+    stack a: una lista de números enteros
 
-Funciones autorizadas :
-•read, write, malloc, free, exit
-•ft_printf y cualquier función equivalente que hayas creado
+    Funciones autorizadas :
+    •read, write, malloc, free, exit
+    •ft_printf y cualquier función equivalente que hayas creado
 
-Se permite usar libft :
-Yes
+    Se permite usar libft :
+    Yes
 
-Descripción :
-Ejecuta las instrucciones de ordenación
+    Descripción :
+    Ejecuta las instrucciones de ordenación
 
 ---
 
@@ -381,23 +383,23 @@ Ejecuta las instrucciones de ordenación
 
 •En caso de error, deberás mostrar Error seguido de un ’\n’ en la stderr. Los errores incluyen, por ejemplo, algunos o todos los argumentos no son enteros, algunos o todos los argumentos son más grandes que un número entero, hay duplicados, una instrucción no existe y/o no tiene el formato correcto.
 
-$>./checker 3 2 1 0
-rra
-pb
-sa
-rra
-pa
-OK
-$>./checker 3 2 1 0
-sa
-rra
-pb
-KO
-$>./checker 3 2 one 0
-Error
-$>./checker "" 1
-Error
-$>
+    $>./checker 3 2 1 0
+    rra
+    pb
+    sa
+    rra
+    pa
+    OK
+    $>./checker 3 2 1 0
+    sa
+    rra
+    pb
+    KO
+    $>./checker 3 2 one 0
+    Error
+    $>./checker "" 1
+    Error
+    $>
 
 No tienes que clonar exactamente el comportamiento exacto del binario
 que te damos. Es obligatorio gestionar errores pero es decisión tuya
