@@ -257,7 +257,7 @@ Este ejemplo ordena los enteros de a en 12 instrucciones. ¿Puedes hacerlo mejor
     push_swap
 
     Archivos a entregar :
-    Makefile, \*.h, \_.c
+    Makefile, *.h, *.c
 
     Makefile :
     NAME, all, clean, fclean, re
@@ -310,8 +310,6 @@ Tu programa deberá cumplir la siguientes normas:
     $>
 
 Durante la evaluación tendrás a tu disposición un binario para verificar el correcto funcionamiento de tu programa. Funciona de la siguiente forma:
-
-• Ejemplo
 
     $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
     6
