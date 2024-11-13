@@ -60,8 +60,13 @@ int	main(int argc, char *argv[])
 
 	stack1 = ft_calloc(argc, sizeof(char));
 	stack2 = ft_calloc(argc, sizeof(char));
+	// initial function: save argvs in stack1
 	initial_set(argc, argv, stack1);
-	fill_new_stack(stack2, argc);
+	// check initial: check no repeat
+	if (initial_check(stack1, argc - 1))
+		fill_new_stack(stack2, argc);
+	else
+		return (printf("Bad numbers selected\n"));
 	printf("pre move:\n\n");
 	printer(stack1, stack2);
 	ft_aux(stack1, stack2, argc);

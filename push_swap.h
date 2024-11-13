@@ -6,4 +6,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+int	initial_check(char *stack, int size);
+int	check(char *stack, int size);
+
 #endif
