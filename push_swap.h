@@ -17,9 +17,9 @@ typedef struct s_stack
 	t_node	*top;
 }	t_stack;
 
-t_stack	*initial_set(char *argv[]);
-int	initial_check(char *stack, int size);
-int	check(char *stack, int size);
+t_stack	*initial_set(char *numbers[]);
+int		initial_check(char *stack, int size);
+int		check(char *stack, int size);
 
 
 #endif

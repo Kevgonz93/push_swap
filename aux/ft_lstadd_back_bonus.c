@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_stack **lst, t_node *new)
 {
-	t_list	*last;
+	t_node	*last;
 
 	if (!lst || !new)
 		return ;

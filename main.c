@@ -1,6 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/30 19:16:09 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/11/30 19:16:12 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "push_swap.h"
+
+t_stack	*initial_set(char *numbers[])
+{
+	t_stack	*stack_a;
+	t_node	*initial;
+
+	stack_a = ft_calloc(1, sizeof(t_stack));
+	initial = ft_lstnew(numbers[1]);
+}
 
 static void	printer(t_stack stack)
 {

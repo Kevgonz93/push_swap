@@ -11,14 +11,15 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_stack	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*temp;
-	t_list	*list;
-	t_list	*node;
+	t_node	*temp;
+	t_stack	*list;
+	t_node	*node;
 	void	*content;
 
 	if (!lst || !f || !del)
@@ -27,7 +28,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	temp = lst;
 	while (temp)
 	{
-		content = f(temp->content);
+		content = f(temp->value);
 		node = ft_lstnew(content);
 		if (!node)
 		{
