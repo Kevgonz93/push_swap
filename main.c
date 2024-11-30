@@ -2,70 +2,28 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-static void	initial_set(int size, char *input[], char *stack1)
+static void	printer(t_stack stack)
 {
-	int	i;
+	t_node	*top;
+	t_node	*next;
 
-	i = 0;
-	while (i < size - 1)
+	top = stack.top;
+	next = top->next;
+	printf("%d\n", top->value);
+	while (top->next != NULL)
 	{
-		stack1[i] = *input[i + 1];
-		i++;
+		printf("%d\n", next->value);
+		next = next->next;
 	}
-	stack1[i] = '\0';
-}
-
-static void	fill_new_stack(char *stack2, int size)
-{
-	int	i;
-	int	n;
-
-	i = size - 1;
-	n = 0;
-	while (n < i)
-		stack2[n++] = ' ';
-	stack2[n] = '\0';
-}
-
-static void	ft_aux(char *stack1, char *stack2, int size)
-{
-	int		n;
-	int		i;
-	char	c;
-
-	i = size - 2;
-	n = 0;
-	c = ' ';
-	while (stack1[n])
-	{
-		stack2[i--] = stack1[n];
-		stack1[n++] = c;
-	}
-}
-
-static void	printer(char *str1, char *str2)
-{
-	int	n;
-
-	n = 0;
-	while (str1[n] != '\0')
-		printf("stack1[%d]='%c'\tstack2[%d]='%c'\n", n, str1[n], n, str2[n++]);
-	printf("\n");
+	printf("---------------------\n");
+	printf("A\t\tB\n");
 }
 
 int	main(int argc, char *argv[])
 {
-	char	*stack1;
-	char	*stack2;
+	t_stack	*stack_a;
 
-	stack1 = ft_calloc(argc, sizeof(char));
-	stack2 = ft_calloc(argc, sizeof(char));
-	initial_set(argc, argv, stack1);
-	fill_new_stack(stack2, argc);
-	printf("pre move:\n\n");
-	printer(stack1, stack2);
-	ft_aux(stack1, stack2, argc);
-	printf("post move:\n\n");
-	printer(stack1, stack2);
+	stack_a = initial_set(argv);
+	printer(*stack_a);
 	return (0);
 }
