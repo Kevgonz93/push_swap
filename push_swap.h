@@ -18,5 +18,8 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*initial_set(char *argv[]);
+int	initial_check(char *stack, int size);
+int	check(char *stack, int size);
+
 
 #endif

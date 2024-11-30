@@ -1,3 +1,4 @@
+
 #include "push_swap.h"
 
 static void	fill_stack(t_stack *stack, char *argv[])
