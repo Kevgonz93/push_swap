@@ -11,20 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_stack *lst, void (*del)(int))
 {
-	t_list	*obj;
+	t_node	*current;
+	t_node	*obj;
 
-	if (!lst || !del)
+	if (!lst || !lst->top || !del)
 		return ;
-	while (*lst)
+	current = lst->top;
+	while (current)
 	{
-		obj = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = obj;
+		obj = current->next;
+		ft_lstdelone(current, del);
+		current = obj;
 	}
+	lst->top = NULL;
 }

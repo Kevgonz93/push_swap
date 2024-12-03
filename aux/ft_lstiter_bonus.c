@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_lstiter(t_node *lst, void (*f)(void *))
+void	ft_lstiter(t_node *lst, void (*f)(int))
 {
 	if (!lst || !f)
 		return ;

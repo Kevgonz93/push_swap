@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-t_node	*ft_lstnew(void *content)
+t_node	*ft_lstnew(int content)
 {
 	t_node	*node;
 

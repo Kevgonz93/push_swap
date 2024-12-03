@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_lstdelone(t_node *lst, void (*del)(void *))
+void	ft_lstdelone(t_node *lst, void (*del)(int))
 {
 	if (lst && del)
 	{

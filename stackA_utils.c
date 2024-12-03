@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-void	sa(char **stack)
-{
+// void	sa(char **stack)
+// {
 
-}
+// }
 
-void	pa(char **stack)
-{
+// void	pa(char **stack)
+// {
 
-}
+// }

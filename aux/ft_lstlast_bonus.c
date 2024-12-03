@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-t_node	*ft_lstlast(t_node *lst)
+t_node	*ft_lstlast(t_stack *lst)
 {
+	t_node	*last;
+
+	last = lst->top;
 	if (!lst)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	while (last->next)
+		last = last->next;
+	return (last);
 }

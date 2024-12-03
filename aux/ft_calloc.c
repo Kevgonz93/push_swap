@@ -20,6 +20,6 @@ void	*ft_calloc(size_t data, size_t size)
 
 	prt = malloc(size * data);
 	if (!prt)
-		return (NULL);
+		return (free(prt), NULL);
 	return (ft_memset(prt, 0, size * data));
 }
