@@ -15,6 +15,35 @@
 #include "push_swap.h"
 #include "aux/libft.h"
 
+static void	initial_check(char *numbers[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (numbers[i])
+	{
+		j = 0;
+		while (numbers[i][j])
+		{
+			if (numbers[i][j] == '-' && j == 0)
+				j++;
+			if (!ft_isdigit(numbers[i][j]))
+			{
+				printf("Error: Just numbers please\n");
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+	if (is_repeat(numbers))
+	{
+		printf("Error: There are repeated numbers\n");
+		exit(1);
+	}
+}
+
 t_stack	*initial_set(char *numbers[])
 {
 	t_stack	*stack;
@@ -30,53 +59,77 @@ t_stack	*initial_set(char *numbers[])
 	if (!initial)
 		return (free(stack), NULL);
 	stack->top = initial;
-	// printf("top-value = %d\n\n", stack->top->value);
-	// printf("node-value = %d\n", initial->value);
 	while (numbers[i])
 	{
 		new = ft_lstnew(ft_atoi(numbers[i++]));
 		if (!new)
-			return	(free(stack), ft_lstclear(stack, del), NULL);
+			return (free(stack), ft_lstclear(stack, del), NULL);
 		ft_lstadd_back(stack, new);
-		// printf("node-value = %d\n", new->value);
 	}
 	return (stack);
 }
 
-static void	printer(t_stack *stack)
+static t_node	*initial_printer(t_stack *stack)
 {
-	t_node	*node;
+	t_node	*temp;
+
+	if (!stack)
+		temp = NULL;
+	else
+		temp = stack->top;
+	return (temp);
+}
+
+static void	printer(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*node_a;
+	t_node	*node_b;
 	int		i;
 
-	i = 1;
-	node = stack->top;
-	if (!node)
-		return ;
-	printf("stack[%d]\t=\t%d\n", i, node->value);
-	i++;
-	while (node->next)
+	if (ft_lstsize(stack_a) >= ft_lstsize(stack_b))
+		i = ft_lstsize(stack_a);
+	else
+		i = ft_lstsize(stack_b);
+	node_a = initial_printer(stack_a);
+	node_b = initial_printer(stack_b);
+	while (i--)
 	{
-		node = node->next;
-		printf("stack[%d]\t=\t%d\n", i, node->value);
-		i++;
+		if (node_a)
+		{
+			printf("\t%d\t\t\t", node_a->value);
+			node_a = node_a->next;
+		}
+		else
+			printf("\t\t\t\t");
+		if (node_b)
+		{
+			printf("\t%d\n", node_b->value);
+			node_b = node_b->next;
+		}
+		else
+			printf("\n");
 	}
-	printf("---------------------------------\t\t--------------------------------\n");
-	printf("\t\tA\t\t\t\t\t\tB\n");
+	printf("-----------------\t\t-----------------\n");
+	printf("\tA\t\t\t\tB\n");
 }
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
-	int		i;
+	t_stack	*stack_b;
 
-	// i = 1;
-	// while (argv[i])
-	// 	printf("numbers: %s\n", argv[i++]);
 	if (argc == 1)
-		return (printf("Please choise the numbers to start the program\n"));
+		return (printf("Error: Write the numbers to sort\n"));
+	initial_check(argv);
 	stack_a = initial_set(argv);
-	printf("numbers = %d\n", argc - 1);
-	printer(stack_a);
+	stack_b = ft_calloc(1, sizeof(t_stack));
+	printer(stack_a, stack_b);
+	while (!check(stack_a, stack_b))
+	{
+		printf("stack is not sorted\n");
+		// search_solition(stack_a, stack_b);
+	}
+	printf("stack is sorted\n");
 	ft_lstclear(stack_a, del);
 	return (0);
 }

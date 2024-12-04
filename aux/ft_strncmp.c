@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 21:17:56 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/09/26 21:17:57 by kegonzal         ###   ########.fr       */
+/*   Created: 2024/09/17 20:36:40 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/09/17 20:36:41 by kegonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../push_swap.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_lstsize(t_stack *lst)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_node	*node;
-	int		i;
+	size_t	i;
 
-	node = lst->top;
 	i = 0;
-	while (node)
+	while (i < n && s1[i] != 0 && s2[i] != 0)
 	{
-		node = node->next;
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	return (i);
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
 }

@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 21:17:56 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/09/26 21:17:57 by kegonzal         ###   ########.fr       */
+/*   Created: 2024/09/25 16:54:35 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/09/25 16:54:37 by kegonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../push_swap.h"
+#include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-int	ft_lstsize(t_stack *lst)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_node	*node;
-	int		i;
-
-	node = lst->top;
-	i = 0;
-	while (node)
-	{
-		node = node->next;
-		i++;
-	}
-	return (i);
+	write(fd, &c, 1);
 }

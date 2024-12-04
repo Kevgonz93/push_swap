@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-t_stack	*ft_lstmap(t_node **lst, int(*f)(int), void (*del)(int))
+t_stack	*ft_lstmap(t_node **lst, int *(*f)(int), void (*del)(int))
 {
 	t_node	*temp;
 	t_stack	*list;
@@ -28,7 +28,7 @@ t_stack	*ft_lstmap(t_node **lst, int(*f)(int), void (*del)(int))
 	temp = *lst;
 	while (temp)
 	{
-		content = f(temp->value);
+		content = *f(temp->value);
 		node = ft_lstnew(content);
 		if (!node)
 		{
