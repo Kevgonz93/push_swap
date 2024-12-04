@@ -127,7 +127,7 @@ int	main(int argc, char *argv[])
 	while (!check(stack_a, stack_b))
 	{
 		printf("stack is not sorted\n");
-		// search_solition(stack_a, stack_b);
+		search_solution(stack_a, stack_b);
 	}
 	printf("stack is sorted\n");
 	ft_lstclear(stack_a, del);
