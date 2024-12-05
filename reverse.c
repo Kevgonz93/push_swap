@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack *stack)
+void	reverse(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*last;
@@ -30,6 +30,7 @@ void	reverse_rotate(t_stack *stack)
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	printf("rrr\n");
+	reverse(stack_a);
+	reverse(stack_b);
 }

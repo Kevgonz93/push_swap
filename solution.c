@@ -23,8 +23,8 @@ static void	split_stack(t_stack *stack_a, t_stack *stack_b)
 	i = 0;
 	while (i < half)
 	{
-		printf("pb\n");
 		pb(stack_a, stack_b);
+		printf("pb\n");
 		i++;
 	}
 }
@@ -44,28 +44,6 @@ static void	merge_stack(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static void	sorting(t_stack *stack_a, t_stack *stack_b)
-{
-	char	*move_a;
-	char	*move_b;
-
-	move_a = next_move(stack_a);
-	move_b = next_move(stack_b);
-
-	if (move_a == move_b)
-	{
-		if (move_a == "rotate")
-			return (rr(stack_a, stack_b), printf("rr\n"));
-		else if (move_a == "reverse")
-			return (rrr(stack_a, stack_b), printf("rrr\n"));
-		else
-			return (ss(stack_a, stack_b), printf("ss\n"));
-	}
-	move(stack_a, move_a);
-	move(stack_b, move_b);
-	return ;
-}
-
 static char	*next_move(t_stack *stack)
 {
 	t_node	*top;
@@ -79,6 +57,28 @@ static char	*next_move(t_stack *stack)
 		return ("reverse");
 	else if (top->value > top->next->value)
 		return ("swap");
+	return (NULL);
+}
+
+static void	sorting(t_stack *stack_a, t_stack *stack_b)
+{
+	char	*move_a;
+	char	*move_b;
+
+	move_a = next_move(stack_a);
+	move_b = next_move(stack_b);
+	if (move_a == move_b)
+	{
+		if (ft_strncmp(move_a, "rotate", 7))
+			rr(stack_a, stack_b);
+		else if (ft_strncmp(move_a, "reverse", 8))
+			rrr(stack_a, stack_b);
+		else
+			ss(stack_a, stack_b);
+	}
+	move(stack_a, move_a, 'a');
+	move(stack_b, move_b, 'b');
+	return ;
 }
 
 void	search_solution(t_stack *stack_a, t_stack *stack_b)

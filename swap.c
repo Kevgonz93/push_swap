@@ -26,6 +26,7 @@ void	swap(t_stack *stack)
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
+	printf("ss\n");
 	swap(stack_a);
 	swap(stack_b);
 }

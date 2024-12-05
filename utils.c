@@ -57,12 +57,30 @@ int	check(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
-void	move(t_stack *stack, char *move)
+void	move(t_stack *stack, char *move, char s)
 {
 	if (!ft_strncmp(move, "swap", 5))
+	{
 		swap(stack);
+		if (s == 'a')
+			printf("sa\n");
+		else
+			printf("sb\n");
+	}
 	else if (!ft_strncmp(move, "rotate", 7))
+	{
 		rotate(stack);
+		if (s == 'a')
+			printf("ra\n");
+		else
+			printf("rb\n");
+	}
 	else
+	{
 		reverse(stack);
+		if (s == 'a')
+			printf("rra\n");
+		else
+			printf("rrb\n");
+	}
 }

@@ -117,6 +117,7 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	// t_node	*last;
 
 	if (argc == 1)
 		return (printf("Error: Write the numbers to sort\n"));
@@ -124,6 +125,8 @@ int	main(int argc, char *argv[])
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
+	// last = ft_lstlast(stack_a);
+	// printf("the last numb is: %d\n", last->value);
 	if (!check(stack_a, stack_b))
 	{
 		printf("stack is not sorted\n");
