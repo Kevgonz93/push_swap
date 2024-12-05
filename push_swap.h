@@ -26,5 +26,6 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 void	move(t_stack *stack_a, t_stack *stack_b, char *move);
+void    search_solution(t_stack *stack_a, t_stack *stack_b);
 
 #endif

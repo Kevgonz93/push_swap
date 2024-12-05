@@ -124,12 +124,13 @@ int	main(int argc, char *argv[])
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
-	while (!check(stack_a, stack_b))
+	if (!check(stack_a, stack_b))
 	{
 		printf("stack is not sorted\n");
 		search_solution(stack_a, stack_b);
 	}
-	printf("stack is sorted\n");
+	else
+		printf("stack is sorted\n");
 	ft_lstclear(stack_a, del);
 	return (0);
 }
