@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:09:35 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:09:36 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	t_node	*first;
 
@@ -10,16 +22,6 @@ static void	swap(t_stack *stack)
 	stack->top = first->next;
 	first->next = stack->top->next;
 	stack->top->next = first;
-}
-
-void	sa(t_stack *stack)
-{
-	swap(stack);
-}
-
-void	sb(t_stack *stack)
-{
-	swap(stack);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)

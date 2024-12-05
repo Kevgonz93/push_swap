@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:08:28 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:08:30 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -12,6 +24,7 @@ t_stack	*initial_set(char *numbers[]);
 int		check(t_stack *stack_a, t_stack *stack_b);
 void	del(int content);
 int		is_repeat(char *numbers[]);
+void	search_solution(t_stack *stack_a, t_stack *stack_b);
 
 // MOVES
 void	sa(t_stack *stack);
@@ -25,7 +38,5 @@ void	rrb(t_stack *stack);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
-void	move(t_stack *stack_a, t_stack *stack_b, char *move);
-void    search_solution(t_stack *stack_a, t_stack *stack_b);
 
 #endif

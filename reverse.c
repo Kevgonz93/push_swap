@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:07:01 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:07:02 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
 	t_node	*first;
 	t_node	*last;
@@ -14,16 +26,6 @@ static void	reverse_rotate(t_stack *stack)
 	first->next = NULL;
 	last->next = stack->top;
 	stack->top = last;
-}
-
-void	rra(t_stack *stack)
-{
-	reverse_rotate(stack);
-}
-
-void	rrb(t_stack *stack)
-{
-	reverse_rotate(stack);
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:09:46 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:09:47 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_repeat(char *numbers[])
@@ -45,28 +57,12 @@ int	check(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
-void	move(t_stack *stack_a, t_stack *stack_b, char *move)
+void	move(t_stack *stack, char *move)
 {
-	if (!ft_strncmp(move, "sa", 3))
-		sa(stack_a);
-	else if (!ft_strncmp(move, "sb", 3))
-		sb(stack_b);
-	else if (!ft_strncmp(move, "ss", 3))
-		ss(stack_a, stack_b);
-	else if (!ft_strncmp(move, "ra", 3))
-		ra(stack_a);
-	else if (!ft_strncmp(move, "rb", 3))
-		rb(stack_b);
-	else if (!ft_strncmp(move, "rr", 3))
-		rr(stack_a, stack_b);
-	else if (!ft_strncmp(move, "rra", 4))
-		rra(stack_a);
-	else if (!ft_strncmp(move, "rrb", 4))
-		rrb(stack_b);
-	else if (!ft_strncmp(move, "rrr", 4))
-		rrr(stack_a, stack_b);
-	else if (!ft_strncmp(move, "pa", 3))
-		pa(stack_a, stack_b);
+	if (!ft_strncmp(move, "swap", 5))
+		swap(stack);
+	else if (!ft_strncmp(move, "rotate", 7))
+		rotate(stack);
 	else
-		pb(stack_a, stack_b);
+		reverse(stack);
 }
