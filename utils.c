@@ -39,21 +39,19 @@ void	del(int content)
 	return ;
 }
 
-int	check(t_stack *stack_a, t_stack *stack_b)
+int	check(t_stack *stack)
 {
 	t_node	*node;
 
-	node = stack_a->top;
-	if (!node)
-		return (0);
+	node = stack->top;
+	if (!node || !node->next)
+		return (1);
 	while (node->next)
 	{
 		if (node->value > node->next->value)
 			return (0);
 		node = node->next;
 	}
-	if (stack_b->top)
-		return (0);
 	return (1);
 }
 

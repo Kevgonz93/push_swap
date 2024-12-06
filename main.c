@@ -127,7 +127,7 @@ int	main(int argc, char *argv[])
 	printer(stack_a, stack_b);
 	// last = ft_lstlast(stack_a);
 	// printf("the last numb is: %d\n", last->value);
-	if (!check(stack_a, stack_b))
+	if (!check(stack_a))
 	{
 		printf("stack is not sorted\n");
 		search_solution(stack_a, stack_b);

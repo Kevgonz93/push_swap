@@ -25,9 +25,9 @@ t_stack	*initial_set(char *numbers[]);
 
 // UTILS.C
 
-int		is_repeat(char *numbers[]);
+int		is_repeat(char *nusmbers[]);
 void	del(int content);
-int		check(t_stack *stack_a, t_stack *stack_b);
+int		check(t_stack *stack);
 void	move(t_stack *stack, char *move, char s);
 
 // SOLUTION.C
