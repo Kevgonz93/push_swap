@@ -23,7 +23,8 @@ int	is_repeat(char *numbers[])
 		j = i + 1;
 		while (numbers[j])
 		{
-			if (!ft_strncmp(numbers[i], numbers[j], ft_strlen(numbers[i])))
+			if (ft_strlen(numbers[i]) == ft_strlen(numbers[j]) &&
+			    !ft_strncmp(numbers[i], numbers[j], ft_strlen(numbers[i])))
 				return (1);
 			j++;
 		}
@@ -55,30 +56,60 @@ int	check(t_stack *stack)
 	return (1);
 }
 
-void	move(t_stack *stack, char *move, char s)
+int	nearly_sorted(t_stack *stack)
+{
+	t_node	*node;
+	int		block;
+	int		break_point;
+	int		i;
+
+	break_point = 0;
+	block = 1;
+	i = 1;
+	node = stack->top;
+	if (!node || !node->next)
+		return (0);
+	while (node->next)
+	{
+		if (node->value > node->next->value)
+		{
+			block++;
+			break_point = i;
+		}
+		node = node->next;
+		i++;
+	}
+	if (block == 2)
+		return (break_point);
+	else
+		return (0);
+}
+
+int	move(t_stack *stack, char *move, char s)
 {
 	if (!ft_strncmp(move, "swap", 5))
 	{
 		swap(stack);
 		if (s == 'a')
-			printf("sa\n");
+			return (printf("sa\n"));
 		else
-			printf("sb\n");
+			return (printf("sb\n"));
 	}
 	else if (!ft_strncmp(move, "rotate", 7))
 	{
 		rotate(stack);
 		if (s == 'a')
-			printf("ra\n");
+			return (printf("ra\n"));
 		else
-			printf("rb\n");
+			return (printf("rb\n"));
 	}
-	else
+	else if (!ft_strncmp(move, "reverse", 8))
 	{
 		reverse(stack);
 		if (s == 'a')
-			printf("rra\n");
+			return (printf("rra\n"));
 		else
-			printf("rrb\n");
+			return (printf("rrb\n"));
 	}
+	return (0);
 }

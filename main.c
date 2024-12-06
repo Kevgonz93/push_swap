@@ -80,7 +80,7 @@ static t_node	*initial_printer(t_stack *stack)
 	return (temp);
 }
 
-static void	printer(t_stack *stack_a, t_stack *stack_b)
+void	printer(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*node_a;
 	t_node	*node_b;
@@ -110,30 +110,29 @@ static void	printer(t_stack *stack_a, t_stack *stack_b)
 			printf("\n");
 	}
 	printf("-----------------\t\t-----------------\n");
-	printf("\tA\t\t\t\tB\n");
+	printf("\tA\t\t\t\tB\n\n");
 }
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	// t_node	*last;
+	int		i;
 
+	i = 0;
 	if (argc == 1)
 		return (printf("Error: Write the numbers to sort\n"));
 	initial_check(argv);
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
-	// last = ft_lstlast(stack_a);
-	// printf("the last numb is: %d\n", last->value);
-	if (!check(stack_a))
+	while (!check(stack_a))
 	{
 		printf("stack is not sorted\n");
-		search_solution(stack_a, stack_b);
+		i += search_solution(stack_a, stack_b, argc);
+
 	}
-	else
-		printf("stack is sorted\n");
+	printf("stack is sorted with %d moves.\n", i);
 	ft_lstclear(stack_a, del);
 	return (0);
 }

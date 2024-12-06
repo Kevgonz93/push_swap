@@ -22,17 +22,19 @@
 //  MAIN.C
 
 t_stack	*initial_set(char *numbers[]);
+void	printer(t_stack *stack_a, t_stack *stack_b);
 
 // UTILS.C
 
 int		is_repeat(char *nusmbers[]);
 void	del(int content);
 int		check(t_stack *stack);
-void	move(t_stack *stack, char *move, char s);
+int		nearly_sorted(t_stack *stack);
+int		move(t_stack *stack, char *move, char s);
 
 // SOLUTION.C
 
-void	search_solution(t_stack *stack_a, t_stack *stack_b);
+int		search_solution(t_stack *stack_a, t_stack *stack_b, int argc);
 
 // MOVES
 
