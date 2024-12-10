@@ -69,7 +69,7 @@ t_stack	*initial_set(char *numbers[])
 	return (stack);
 }
 
-static t_node	*initial_printer(t_stack *stack)
+static t_node	*pre_pinter(t_stack *stack)
 {
 	t_node	*temp;
 
@@ -90,8 +90,8 @@ void	printer(t_stack *stack_a, t_stack *stack_b)
 		i = ft_lstsize(stack_a);
 	else
 		i = ft_lstsize(stack_b);
-	node_a = initial_printer(stack_a);
-	node_b = initial_printer(stack_b);
+	node_a = pre_pinter(stack_a);
+	node_b = pre_pinter(stack_b);
 	while (i--)
 	{
 		if (node_a)
@@ -117,22 +117,25 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		*solution;
 	int		i;
 
 	i = 0;
 	if (argc == 1)
 		return (printf("Error: Write the numbers to sort\n"));
 	initial_check(argv);
+	solution = ft_calloc(argc - 1, sizeof(int));
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
 	while (!check(stack_a))
 	{
 		printf("stack is not sorted\n");
-		i += search_solution(stack_a, stack_b, argc);
-
+		i += search_solution(stack_a, stack_b);
 	}
 	printf("stack is sorted with %d moves.\n", i);
 	ft_lstclear(stack_a, del);
+	free(stack_b);
+	free(solution);
 	return (0);
 }

@@ -30,11 +30,14 @@ int		is_repeat(char *nusmbers[]);
 void	del(int content);
 int		check(t_stack *stack);
 int		nearly_sorted(t_stack *stack);
+char	*move_nearly(t_stack *stack, int nearly);
 int		move(t_stack *stack, char *move, char s);
-
+int		sorting_nearly(t_stack *stack_a,
+			t_stack *stack_b, int nearly_a, int nearly_b);
 // SOLUTION.C
 
-int		search_solution(t_stack *stack_a, t_stack *stack_b, int argc);
+int		same_move(t_stack *stack_a, t_stack *stack_b, char *move_a);
+int		search_solution(t_stack *stack_a, t_stack *stack_b);
 
 // MOVES
 
