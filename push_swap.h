@@ -34,6 +34,8 @@ char	*move_nearly(t_stack *stack, int nearly);
 int		move(t_stack *stack, char *move, char s);
 int		sorting_nearly(t_stack *stack_a,
 			t_stack *stack_b, int nearly_a, int nearly_b);
+char	*next_nearly(t_stack *stack, int nearly);
+
 // SOLUTION.C
 
 int		same_move(t_stack *stack_a, t_stack *stack_b, char *move_a);

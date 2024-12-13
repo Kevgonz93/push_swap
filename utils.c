@@ -86,7 +86,7 @@ int	nearly_sorted(t_stack *stack)
 		return (0);
 }
 
-char	*move_nearly(t_stack *stack, int nearly)
+char	*next_nearly(t_stack *stack, int nearly)
 {
 	if (nearly == 0)
 		return ("nothing");
@@ -105,9 +105,9 @@ int	sorting_nearly(t_stack *stack_a, t_stack *stack_b, int nearly_a, int nearly_
 	i = 0;
 	while (nearly_a != 0 || nearly_b != 0)
 	{
-		move_a = move_nearly(stack_a, nearly_a);
+		move_a = next_nearly(stack_a, nearly_a);
 		printf("move_a: %s\n", move_a);
-		move_b = move_nearly(stack_b, nearly_b);
+		move_b = next_nearly(stack_b, nearly_b);
 		printf("move_b: %s\n", move_b);
 		while (i < nearly_a && i < nearly_b)
 		{
@@ -135,9 +135,28 @@ int	sorting_nearly(t_stack *stack_a, t_stack *stack_b, int nearly_a, int nearly_
 	return (0);
 }
 
+int	same_move(t_stack *stack_a, t_stack *stack_b, char *move_a)
+{
+	if (!ft_strncmp(move_a, "rotate", 7))
+	{
+		rr(stack_a, stack_b);
+		return (printer(stack_a, stack_b), 1);
+	}
+	else if (!ft_strncmp(move_a, "reverse", 8))
+	{
+		rrr(stack_a, stack_b);
+		return (printer(stack_a, stack_b), 1);
+	}
+	else
+	{
+		ss(stack_a, stack_b);
+		return (printer(stack_a, stack_b), 1);
+	}
+}
+
 int	move(t_stack *stack, char *move, char s)
 {
-	if (ft_strncmp(move, "swap", 5))
+	if (!ft_strncmp(move, "swap", 5))
 	{
 		swap(stack);
 		if (s == 'a')
@@ -145,7 +164,7 @@ int	move(t_stack *stack, char *move, char s)
 		else
 			return (printf("sb\n"));
 	}
-	else if (ft_strncmp(move, "rotate", 7))
+	else if (!ft_strncmp(move, "rotate", 7))
 	{
 		rotate(stack);
 		if (s == 'a')
@@ -153,7 +172,7 @@ int	move(t_stack *stack, char *move, char s)
 		else
 			return (printf("rb\n"));
 	}
-	else if (ft_strncmp(move, "reverse", 8))
+	else if (!ft_strncmp(move, "reverse", 8))
 	{
 		reverse(stack);
 		if (s == 'a')

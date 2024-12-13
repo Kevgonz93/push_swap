@@ -117,25 +117,24 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		*solution;
 	int		i;
 
 	i = 0;
 	if (argc == 1)
 		return (printf("Error: Write the numbers to sort\n"));
 	initial_check(argv);
-	solution = ft_calloc(argc - 1, sizeof(int));
+	printf("initial check done\n");
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
 	while (!check(stack_a))
 	{
 		printf("stack is not sorted\n");
+		printf("searching for a solution\n");
 		i += search_solution(stack_a, stack_b);
 	}
 	printf("stack is sorted with %d moves.\n", i);
 	ft_lstclear(stack_a, del);
 	free(stack_b);
-	free(solution);
 	return (0);
 }
