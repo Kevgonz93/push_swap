@@ -67,6 +67,7 @@ t_stack	*initial_set(char *numbers[])
 			return (free(stack), ft_lstclear(stack, del), NULL);
 		ft_lstadd_back(stack, new);
 	}
+	stack->size = ft_lstsize(stack);
 	return (stack);
 }
 
@@ -93,18 +94,19 @@ void	printer(t_stack *stack_a, t_stack *stack_b)
 		i = ft_lstsize(stack_b);
 	node_a = pre_pinter(stack_a);
 	node_b = pre_pinter(stack_b);
+	update_index(stack_a, stack_b);
 	while (i--)
 	{
 		if (node_a)
 		{
-			printf("\t%d\t\t\t", node_a->value);
+			printf("\t%d (%d)\t\t\t", node_a->value, node_a->index);
 			node_a = node_a->next;
 		}
 		else
 			printf("\t\t\t\t");
 		if (node_b)
 		{
-			printf("\t%d\n", node_b->value);
+			printf("\t%d (%d)\n", node_b->value, node_b->index);
 			node_b = node_b->next;
 		}
 		else
@@ -134,6 +136,8 @@ int	main(int argc, char *argv[])
 		printf("searching for a solution\n");
 		i += search_solution(stack_a, stack_b);
 	}
+	printf("stack is sorted\n\n");
+	printer(stack_a, stack_b);
 	printf("stack is sorted with %d moves.\n", i);
 	ft_lstclear(stack_a, del);
 	free(stack_b);

@@ -30,17 +30,30 @@ void	printer(t_stack *stack_a, t_stack *stack_b);
 int		is_repeat(char *nusmbers[]);
 void	del(int content);
 int		check(t_stack *stack);
-int		nearly_sorted(t_stack *stack);
-char	*move_nearly(t_stack *stack, int nearly);
-int		move(t_stack *stack, char *move, char s);
-int		sorting_nearly(t_stack *stack_a,
-			t_stack *stack_b, int nearly_a, int nearly_b);
-char	*next_nearly(t_stack *stack, int nearly);
+int		moving(t_stack *stack, char *move, char s);
 
 // SOLUTION.C
 
 int		same_move(t_stack *stack_a, t_stack *stack_b, char *move_a);
 int		search_solution(t_stack *stack_a, t_stack *stack_b);
+int		*get_solution(t_stack *stack);
 int		position(int value, int *solution, int size);
+int		move_to_top(t_stack *stack, int index, t_stack *stack_b);
+char	*next_move(t_stack *stack);
+
+// COST.C
+
+void	update_index(t_stack *stack_a, t_stack *stack_b);
+int		get_cost(t_stack *stack_a, t_stack *stack_b);
+void	update_cost(t_stack *stack_a, t_stack *stack_b);
+
+// SHORT_SORTING.C
+
+int		short_sorting(t_stack *stack_a, t_stack *stack_b);
+
+// NEARLY_SORT.C
+
+int		nearly_sorted(t_stack *stack);
+int		sorting_nearly(t_stack *stack_a, t_stack *stack_b, int nearly_a, int nearly_b);
 
 #endif

@@ -34,22 +34,3 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 	reverse(stack_a);
 	reverse(stack_b);
 }
-
-int	is_reverse(t_stack *stack, int *solution, int size)
-{
-	(void)solution;
-	(void)size;
-	int	i;
-
-	i = 0;
-	if (stack->top->value > ft_lstlast(stack)->value)
-		i++;
-	if (stack->top->value < stack->top->next->value)
-		i++;
-	if (i > 1)
-	{
-		printf("is_reverse: %d\n", i);
-		return (1);
-	}
-	return (0);
-}

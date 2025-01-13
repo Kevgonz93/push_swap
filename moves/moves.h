@@ -16,7 +16,7 @@ int		is_rotate(t_stack *stack, int *solution, int size);
 void	reverse(t_stack *stack);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 int		is_reverse(t_stack *stack, int *solution, int size);
-void	pa(t_stack *stack_a, t_stack *stack_b);
-void	pb(t_stack *stack_a, t_stack *stack_b);
+int     pa(t_stack *stack_a, t_stack *stack_b);
+int     pb(t_stack *stack_a, t_stack *stack_b);
 
 #endif

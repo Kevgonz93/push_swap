@@ -33,19 +33,3 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 	rotate(stack_b);
 }
 
-int	is_rotate(t_stack *stack, int *solution, int size)
-{
-	int		i;
-	int		index;
-
-	i = 0;
-	index = position(stack->top->value, solution, size);
-	if (index >= (size / 2))
-		i++;
-	if (i > 0)
-	{
-		printf("is_rotate: %d\n", i);
-		return (1);
-	}
-	return (0);
-}
