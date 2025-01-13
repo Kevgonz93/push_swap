@@ -12,26 +12,23 @@
 
 #include "push_swap.h"
 #include "moves/moves.h"
+#include "sorts/sorts.h"
 
-int	is_repeat(char *numbers[])
+int	moving_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int	j;
+	int	size;
 
-	i = 1;
-	while (numbers[i])
+	i = 0;
+	size = ft_lstsize(stack_a);
+	while (i < 2 && size != 3)
 	{
-		j = i + 1;
-		while (numbers[j])
-		{
-			if (ft_strlen(numbers[i]) == ft_strlen(numbers[j]) &&
-				!ft_strncmp(numbers[i], numbers[j], ft_strlen(numbers[i])))
-				return (1);
-			j++;
-		}
+		pb(stack_a, stack_b);
+		printer(stack_a, stack_b);
 		i++;
+		size = ft_lstsize(stack_a);
 	}
-	return (0);
+	return (i);
 }
 
 void	del(int content)
@@ -41,23 +38,7 @@ void	del(int content)
 	return ;
 }
 
-int	check(t_stack *stack)
-{
-	t_node	*node;
-
-	node = stack->top;
-	if (!node || !node->next)
-		return (1);
-	while (node->next)
-	{
-		if (node->value > node->next->value)
-			return (0);
-		node = node->next;
-	}
-	return (1);
-}
-
-int	same_move(t_stack *stack_a, t_stack *stack_b, char *move_a)
+int	same_moving(t_stack *stack_a, t_stack *stack_b, char *move_a)
 {
 	if (!ft_strncmp(move_a, "rotate", 7))
 	{
@@ -76,56 +57,38 @@ int	same_move(t_stack *stack_a, t_stack *stack_b, char *move_a)
 	}
 }
 
+static void	aux_moving(char *move, char c)
+{
+	if (c == 'a')
+	{
+		if (!ft_strncmp(move, "swap", 5))
+			printf("sa\n");
+		else if (!ft_strncmp(move, "rotate", 7))
+			printf("ra\n");
+		else
+			printf("rra\n");
+	}
+	else
+	{
+		if (!ft_strncmp(move, "swap", 5))
+			printf("sb\n");
+		else if (!ft_strncmp(move, "rotate", 7))
+			printf("rb\n");
+		else
+			printf("rrb\n");
+	}
+}
+
 int	moving(t_stack *stack, char *move, char s)
 {
 	if (!ft_strncmp(move, "swap", 5))
-	{
 		swap(stack);
-		if (s == 'a')
-		{
-			printf("sa\n");
-			return (1);
-		}
-		else if (s == 'b')
-		{
-			printf("sb\n");
-			return (1);
-		}
-		else
-			return (1);
-	}
 	else if (!ft_strncmp(move, "rotate", 7))
-	{
 		rotate(stack);
-		if (s == 'a')
-		{
-			printf("ra\n");
-			return (1);
-		}
-		else if (s == 'b')
-		{
-			printf("rb\n");
-			return (1);
-		}
-		else
-			return (1);
-	}
 	else if (!ft_strncmp(move, "reverse", 8))
-	{
 		reverse(stack);
-		if (s == 'a')
-		{
-			printf("rra\n");
-			return (1);
-		}
-		else if (s == 'b')
-		{
-			printf("rrb\n");
-			return (1);
-		}
-		else
-			return (1);
-	}
-	else
+	else if (!ft_strncmp(move, "nothing", 5))
 		return (0);
+	aux_moving(move, s);
+	return (1);
 }

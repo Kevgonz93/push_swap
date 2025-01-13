@@ -10,30 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOVES_H
-# define MOVES_H
+#ifndef SORTS_H
+# define SORTS_H
 
 # include "../types.h"
 # include "../push_swap.h"
 
-// SWAP
+// NEARLY_SORT.C
 
-void	swap(t_stack *stack);
-void	ss(t_stack *stack_a, t_stack *stack_b);
+int		nearly_sorted(t_stack *stack);
+int		sorting_nearly(t_stack *stack_a, t_stack *stack_b,
+			int nearly_a, int nearly_b);
 
-// ROTATE
+// SHORT_SORTING.C
 
-void	rotate(t_stack *stack);
-void	rr(t_stack *stack_a, t_stack *stack_b);
+int		short_sorting(t_stack *stack_a, t_stack *stack_b);
 
-// REVERSE
+// LARGE_SORT.C
 
-void	reverse(t_stack *stack);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
-
-// PUSH
-
-int		pa(t_stack *stack_a, t_stack *stack_b);
-int		pb(t_stack *stack_a, t_stack *stack_b);
+int		large_sorting(t_stack *stack_a, t_stack *stack_b);
 
 #endif

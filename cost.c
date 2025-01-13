@@ -1,5 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:06:40 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:06:41 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "moves/moves.h"
+
+t_node	*lower_cost(t_stack *stack)
+{
+	t_node	*node;
+	t_node	*temp;
+	int		cost;
+
+	node = stack->top;
+	temp = node;
+	cost = node->cost;
+	while (node)
+	{
+		if (node->cost < cost)
+		{
+			cost = node->cost;
+			temp = node;
+		}
+		node = node->next;
+	}
+	return (temp);
+}
 
 void	update_index(t_stack *stack_a, t_stack *stack_b)
 {
@@ -35,7 +68,7 @@ t_stack	*temp_stack(t_stack *stack, int initial)
 		return (NULL);
 	temp->top = ft_lstnew(initial);
 	if (!temp->top)
-		return(ft_lstclear(temp, del), NULL);
+		return (ft_lstclear(temp, del), NULL);
 	node = stack->top;
 	while (node)
 	{

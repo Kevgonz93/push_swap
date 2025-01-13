@@ -10,30 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOVES_H
-# define MOVES_H
+#include "push_swap.h"
 
-# include "../types.h"
-# include "../push_swap.h"
+int	is_repeat(char *numbers[])
+{
+	int	i;
+	int	j;
 
-// SWAP
+	i = 1;
+	while (numbers[i])
+	{
+		j = i + 1;
+		while (numbers[j])
+		{
+			if (ft_strlen(numbers[i]) == ft_strlen(numbers[j])
+				&& !ft_strncmp(numbers[i], numbers[j], ft_strlen(numbers[i])))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
-void	swap(t_stack *stack);
-void	ss(t_stack *stack_a, t_stack *stack_b);
+int	check(t_stack *stack)
+{
+	t_node	*node;
 
-// ROTATE
-
-void	rotate(t_stack *stack);
-void	rr(t_stack *stack_a, t_stack *stack_b);
-
-// REVERSE
-
-void	reverse(t_stack *stack);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
-
-// PUSH
-
-int		pa(t_stack *stack_a, t_stack *stack_b);
-int		pb(t_stack *stack_a, t_stack *stack_b);
-
-#endif
+	node = stack->top;
+	if (!node || !node->next)
+		return (1);
+	while (node->next)
+	{
+		if (node->value > node->next->value)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}

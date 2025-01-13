@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 15:06:40 by kegonzal          #+#    #+#             */
+/*   Updated: 2024/12/05 15:06:41 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "sorts.h"
 
 int	nearly_sorted(t_stack *stack)
 {
@@ -39,7 +51,8 @@ static char	*next_nearly(t_stack *stack, int nearly)
 		return ("rotate");
 }
 
-int	sorting_nearly(t_stack *stack_a, t_stack *stack_b, int nearly_a, int nearly_b)
+int	sorting_nearly(t_stack *stack_a, t_stack *stack_b,
+	int nearly_a, int nearly_b)
 {
 	char	*move_a;
 	char	*move_b;
@@ -56,7 +69,7 @@ int	sorting_nearly(t_stack *stack_a, t_stack *stack_b, int nearly_a, int nearly_
 		move_b = next_nearly(stack_b, nearly_b);
 		if (move_a && move_b && !ft_strncmp(move_a, move_b, 7))
 		{
-			if (same_move(stack_a, stack_b, move_a))
+			if (same_moving(stack_a, stack_b, move_a))
 				count++;
 		}
 		else
