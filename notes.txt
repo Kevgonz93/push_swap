@@ -2,5 +2,10 @@ tester :
     ./push_swap 42 -17 8 -91 65 -33 24 -6 73 -58
 
 go to dir:
-    cd /Users/kev/Library/Mobile\ Documents/com~apple~CloudDocs/Cursos/42\ Madrid/Cursus/
+    cd Library/Mobile\ Documents/com~apple~CloudDocs/Cursos/42\ Madrid/Cursus/push_swap
 
+42 -17 8    > ra 
+42 8 -17    > ra, sa
+8 42 -17    > rra 
+-17 42 8    > sa ,ra 
+8 -17 42    > sa

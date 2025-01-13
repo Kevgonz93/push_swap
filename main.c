@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "push_swap.h"
-#include "aux/libft.h"
+#include "moves/moves.h"
 
 static void	initial_check(char *numbers[])
 {
@@ -50,6 +48,7 @@ t_stack	*initial_set(char *numbers[])
 	t_node	*initial;
 	t_node	*new;
 	int		i;
+	int		index;
 
 	stack = ft_calloc(1, sizeof(t_stack));
 	if (!stack)
@@ -59,9 +58,11 @@ t_stack	*initial_set(char *numbers[])
 	if (!initial)
 		return (free(stack), NULL);
 	stack->top = initial;
+	index = 1;
 	while (numbers[i])
 	{
 		new = ft_lstnew(ft_atoi(numbers[i++]));
+		new->index = index++;
 		if (!new)
 			return (free(stack), ft_lstclear(stack, del), NULL);
 		ft_lstadd_back(stack, new);

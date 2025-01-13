@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "moves/moves.h"
 
 int	is_repeat(char *numbers[])
 {
@@ -140,17 +141,17 @@ int	same_move(t_stack *stack_a, t_stack *stack_b, char *move_a)
 	if (!ft_strncmp(move_a, "rotate", 7))
 	{
 		rr(stack_a, stack_b);
-		return (printer(stack_a, stack_b), 1);
+		return (printf("\n"), printer(stack_a, stack_b), 1);
 	}
 	else if (!ft_strncmp(move_a, "reverse", 8))
 	{
 		rrr(stack_a, stack_b);
-		return (printer(stack_a, stack_b), 1);
+		return (printf("\n"), printer(stack_a, stack_b), 1);
 	}
 	else
 	{
 		ss(stack_a, stack_b);
-		return (printer(stack_a, stack_b), 1);
+		return (printf("\n"), printer(stack_a, stack_b), 1);
 	}
 }
 

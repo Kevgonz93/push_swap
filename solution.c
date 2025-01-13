@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "moves/moves.h"
 
 static int	split_stack(t_stack *stack_a, t_stack *stack_b)
 {
@@ -90,7 +91,7 @@ static void	*stack_sorted(t_stack *stack)
 	return (solution);
 }
 
-static int	position(int value, int *solution, int size)
+int	position(int value, int *solution, int size)
 {
 	int	i;
 
@@ -106,10 +107,11 @@ static int	position(int value, int *solution, int size)
 
 static char	*next_move(t_stack *stack)
 {
-	t_node	*node;
-	int		n;
 	int		*solution;
 	int		size;
+	int		swap;
+	int		rotate;
+	int		reverse;
 
 	if (!stack->top || !stack->top->next || check(stack) == 1)
 		return ("nothing");
@@ -117,161 +119,214 @@ static char	*next_move(t_stack *stack)
 	if (!solution)
 		return (NULL);
 	size = ft_lstsize(stack);
-	node = stack->top;
-	n = position(node->value, solution, size);
-	free(solution);
-	if (n == -1)
-		return (NULL);
-	if (node->value > node->next->value)
-	{
+	swap = is_swap(stack, solution, size);
+	rotate = is_rotate(stack, solution, size);
+	reverse = is_reverse(stack, solution, size);
+	printf("swap: %d\t rotate: %d\t reverse: %d\n", swap, rotate, reverse);
+	if (swap >= rotate && swap >= reverse)
 		return ("swap");
-	}
-	else if (n <= size / 2)
+	else if (rotate >= swap && rotate >= reverse)
 		return ("rotate");
 	else
 		return ("reverse");
+	return (free(solution), "nothing");
 }
 
-static int	sorting(t_stack *stack_a, t_stack *stack_b)
+static int	large_sorting(t_stack *stack_a, t_stack *stack_b)
 {
-	int		nearly_a;
-	int		nearly_b;
-	int		i;
-	char	*move_a;
-	char	*move_b;
+	static int		nearly_a;
+	static int		nearly_b;
+	static char		*move_a;
+	static char		*move_b;
+	int				i;
 
 	i = 0;
+	nearly_a = nearly_sorted(stack_a);
+	nearly_b = nearly_sorted(stack_b);
 	while (!check(stack_a) || !check(stack_b))
 	{
-		nearly_a = nearly_sorted(stack_a);
-		nearly_b = nearly_sorted(stack_b);
-		while (!check(stack_a) || !check(stack_b))
-		{
-			printf(">>>>>>>> initiating sorting <<<<<<<<\n");
+		printf("<<<<<<<<<<<<<<<<<<-- sorting -->>>>>>>>>>>>>>>>>>\n");
+		if (nearly_a == 0)
+			nearly_a = nearly_sorted(stack_a);
+		printf("nearly_a: %d\n", nearly_a);
+		if (nearly_b == 0)
+			nearly_b = nearly_sorted(stack_b);
+		printf("nearly_b: %d\n", nearly_b);
+		if (nearly_a == 0)
 			move_a = next_move(stack_a);
-			printf("move_a: %s\n", move_a);
+		printf("move_a: %s\n", move_a);
+		if (nearly_b == 0)
 			move_b = next_move(stack_b);
-			printf("move_b: %s\n", move_b);
-			if (!ft_strncmp(move_a, move_b, 7))
-			{
-				printf("move_a is equal to move_b\n");
-				i += same_move(stack_a, stack_b, move_a);
-			}
+		printf("move_b: %s\n", move_b);
+		if (!ft_strncmp(move_a, move_b, 7))
+		{
+			printf("------------ same move initiated ------------\n");
+			printf("the move is: \t\t\t\t");
+			i += same_move(stack_a, stack_b, move_a);
+			if (nearly_a != 0)
+				nearly_a--;
 			else
+				nearly_a = nearly_sorted(stack_a);
+			if (nearly_b != 0)
+				nearly_b--;
+			else
+				nearly_b = nearly_sorted(stack_b);
+			printf("new nearly_a: %d\n", nearly_a);
+			printf("new nearly_b: %d\n", nearly_b);
+			printf("------------ same move finished ------------\n");
+			printf("--------- next moves search initied ---------\n");
+			if (nearly_a == 0)
 			{
-				while (ft_strncmp(move_a, move_b, 7) && !check(stack_a))
-				{
-					printf("check result: %d\n", check(stack_a));
-					printf("------------ A move's init ----------------\n");
-					printf("move_a was: %s\n", move_a);
-					printf("move_b was: %s\n", move_b);
-					i += move(stack_a, move_a, 'a');
-					nearly_a = nearly_sorted(stack_a);
-					printf("new nearly_a: %d\n", nearly_a);
-					printer(stack_a, stack_b);
-					printf("----------- A move's finish ----------------\n");
-					printf("--------- next move_a search initied ---------\n");
-					if (nearly_a == 0)
-						move_a = next_move(stack_a);
-					else
-						move_a = next_nearly(stack_a, nearly_a);
-					printf("stack_a:\n");
-					printf("top: %d\n", stack_a->top->value);
-					printf("next: %d\n", stack_a->top->next->value);
-					printf("bottom: %d\n", ft_lstlast(stack_a)->value);
-					printf("near_a: %d\n", nearly_a);
-					printf("new move_a: %s\n", move_a);
-					if (!ft_strncmp(move_a, move_b, 7))
-						printf("move_a is equal to move_b\n");
-					printf("--------- next move_a search finished ---------\n");
-				}
-				while (ft_strncmp(move_a, move_b, 7) && !check(stack_b))
-				{
-					printf("check result: %d\n", check(stack_a));
-					printf("------------- B move's init ----------------\n");
-					printf("move_a was: %s\n", move_a);
-					printf("move_b was: %s\n", move_b);
-					i += move(stack_b, move_b, 'b');
-					nearly_b = nearly_sorted(stack_b);
-					printf("new nearly_b: %d\n", nearly_b);
-					printer(stack_a, stack_b);
-					printf("------------- B move's finish ----------------\n");
-					printf("--------- next move_b search initied ---------\n");
-					if (nearly_a == 0)
-						move_b = next_move(stack_b);
-					else
-						move_b = next_nearly(stack_b, nearly_b);
-					printf("stack_b:\n");
-					printf("top: %d\n", stack_b->top->value);
-					printf("next: %d\n", stack_b->top->next->value);
-					printf("bottom: %d\n", ft_lstlast(stack_b)->value);
-					printf("near_b: %d\n", nearly_b);
-					printf("new move_b: %s\n", move_b);
-					if (!ft_strncmp(move_a, move_b, 7))
-						printf("move_a is equal to move_b\n");
-					printf("--------- next move_b search finished ---------\n");
-				}
+				printf("nearly_a is 0\n");
+				move_a = next_move(stack_a);
+			}
+			if (nearly_b == 0)
+			{
+				printf("nearly_b is 0\n");
+				move_b = next_move(stack_b);
+			}
+			printf("new move_a: %s\n", move_a);
+			printf("new move_b: %s\n", move_b);
+			printf("--------- next moves search finished ---------\n");
+		}
+		else
+		{
+			while (ft_strncmp(move_a, move_b, 7) && !check(stack_a))
+			{
+				printf("check result: %d\n", check(stack_a));
+				printf("-------------- A move's init ------------------\n");
+				printf("move_a was: %s\n", move_a);
+				printf("move_b was: %s\n", move_b);
+				printf("the move is: \t\t\t\t");
+				i += move(stack_a, move_a, 'a');
+				if (nearly_a != 0)
+					nearly_a--;
+				printf("new nearly_a: %d\n", nearly_a);
+				printer(stack_a, stack_b);
+				printf("------------- A move's finish ------------------\n");
+				printf("--------- next move_a search initied ---------\n");
+				printf("stack_a:\n");
+				printf("top: %d\n", stack_a->top->value);
+				printf("next: %d\n", stack_a->top->next->value);
+				printf("bottom: %d\n", ft_lstlast(stack_a)->value);
+				printf("near_a: %d\n", nearly_a);
+				printf("new move_a: %s\n", move_a);
+				if (!ft_strncmp(move_a, move_b, 7))
+					printf("move_a is equal to move_b\n");
+				printf("--------- next move_a search finished ---------\n");
+			}
+			while (ft_strncmp(move_a, move_b, 7) && !check(stack_b))
+			{
+				printf("check result: %d\n", check(stack_a));
+				printf("------------- B move's init ----------------\n");
+				printf("move_a was: %s\n", move_a);
+				printf("move_b was: %s\n", move_b);
+				printf("the move is: \t\t\t\t");
+				i += move(stack_b, move_b, 'b');
+				nearly_b = nearly_sorted(stack_b);
+				printf("new nearly_b: %d\n", nearly_b);
+				printer(stack_a, stack_b);
+				printf("------------- B move's finish ----------------\n");
+				printf("--------- next move_b search initied ---------\n");
+				if (nearly_a == 0)
+					move_b = next_move(stack_b);
+				else
+					move_b = next_nearly(stack_b, nearly_b);
+				printf("stack_b:\n");
+				printf("top: %d\n", stack_b->top->value);
+				printf("next: %d\n", stack_b->top->next->value);
+				printf("bottom: %d\n", ft_lstlast(stack_b)->value);
+				printf("near_b: %d\n", nearly_b);
+				printf("new move_b: %s\n", move_b);
+				if (!ft_strncmp(move_a, move_b, 7))
+					printf("move_a is equal to move_b\n");
+				printf("--------- next move_b search finished ---------\n");
 			}
 		}
-		// while (nearly_a != 0 && nearly_b != 0)
-		// {
-		// 	printf("initating sorting_nearly\n");
-		// 	printf("nearly_a: %d\n", nearly_a);
-		// 	move_a = next_nearly(stack_a, nearly_a);
-		// 	printf("move_a: %s\n", move_a);
-		// 	printf("nearly_b: %d\n", nearly_b);
-		// 	move_b = next_nearly(stack_b, nearly_b);
-		// 	printf("move_b: %s\n", move_b);
-		// 	while (i < nearly_a && i < nearly_b)
-		// 	{
-		// 		printf("i: %d\n", i);
-		// 		if (ft_strncmp(move_a, move_b, 7))
-		// 		{
-		// 			printf("move_a: %s\n", move_a);
-		// 			i += move(stack_a, move_a, 'a');
-		// 			printf("move_b: %s\n", move_b);
-		// 			i += move(stack_b, move_b, 'b');
-		// 		}
-		// 		else
-		// 		{
-		// 			printf("move_a: %s\n", move_a);
-		// 			i += same_move(stack_a, stack_b, move_a);
-		// 		}
-		// 	}
-		// 	if (i < nearly_a)
-		// 	{
-		// 		while (i < nearly_a)
-		// 		{
-		// 			printf("move_a: %s\n", move_a);
-		// 			i += move(stack_a, move_a, 'a');
-		// 		}
-		// 	}
-		// 	else if (i < nearly_b)
-		// 	{
-		// 		while (i < nearly_b)
-		// 		{
-		// 			printf("move_b: %s\n", move_b);
-		// 			i += move(stack_b, move_b, 'b');
-		// 		}
-		// 	}
-		// 	return (i);
-		// }
 	}
 	return (i);
+}
+
+int	short_sorting(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node *top;
+	t_node *bottom;
+	t_node *mid;
+
+	top = stack_a->top;
+	mid = top->next;
+	bottom = ft_lstlast(stack_a);
+	if (top->value > mid->value && mid->value < bottom->value && top->value > bottom->value)
+	{
+		printf("ra\n");
+		rotate(stack_a);
+		printer(stack_a, stack_b);
+		return (1);
+	}
+	else if (top->value > bottom->value && top->value > mid->value && mid->value > bottom->value)
+	{
+		printf("ra\n");
+		rotate(stack_a);
+		printer(stack_a, stack_b);
+		printf("sa\n");
+		swap(stack_a);
+		printer(stack_a, stack_b);
+		return (2);
+	}
+	else if (top->value < mid->value && top->value > bottom->value && mid->value > bottom->value)
+	{
+		printf("rra\n");
+		reverse(stack_a);
+		printer(stack_a, stack_b);
+		return (1);
+	}
+	else if (top->value < mid->value && top->value < bottom->value && mid->value > bottom->value)
+	{
+		printf("sa\n");
+		swap(stack_a);
+		printer(stack_a, stack_b);
+		printf("ra\n");
+		rotate(stack_a);
+		printer(stack_a, stack_b);
+		return (2);
+	}
+	else if (top->value > mid->value && mid->value < bottom->value)
+	{
+		printf("sa\n");
+		swap(stack_a);
+		printer(stack_a, stack_b);
+		return (1);
+	}
+	else
+		return (0);
 }
 
 int	search_solution(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
+	int	size;
 
 	i = 0;
-	i += split_stack(stack_a, stack_b);
-	printf("stack splitted\n");
-	while (!check(stack_a) || !check(stack_b))
+	size = ft_lstsize(stack_a);
+
+	if (size == 3)
 	{
-		printf("initiating sorting\n");
-		i += sorting(stack_a, stack_b);
-		// merge_stack(stack_a, stack_b);
+		printf("short sorting\n");
+		i += short_sorting(stack_a, stack_b);
+		return (i);
+	}
+	else
+	{
+		i += split_stack(stack_a, stack_b);
+		printf("stack splitted\n");
+		// get_cost(stack_a, stack_b);
+		// printf("cost calculated\n");
+		while (!check(stack_a) || !check(stack_b))
+		{
+			printf("initiating sorting\n");
+			i += large_sorting(stack_a, stack_b);
+			// merge_stack(stack_a, stack_b);
+		}
 	}
 	return (i);
 }

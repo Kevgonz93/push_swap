@@ -17,11 +17,14 @@ typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
+	int				index;
+	int				cost;
 }	t_node;
 
 typedef struct s_stack
 {
 	t_node	*top;
+	int		size;
 }	t_stack;
 
 #endif
