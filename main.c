@@ -99,20 +99,20 @@ void	printer(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (node_a)
 		{
-			printf("\t%d (%d)\t\t\t", node_a->value, node_a->index);
+			printf("\t[%d]%d (%d)\t\t\t", node_a->index, node_a->value, node_a->cost);
 			node_a = node_a->next;
 		}
 		else
 			printf("\t\t\t\t");
 		if (node_b)
 		{
-			printf("\t%d (%d)\n", node_b->value, node_b->index);
+			printf("\t[%d]%d (%d)\n", node_b->index, node_b->value, node_b->cost);
 			node_b = node_b->next;
 		}
 		else
 			printf("\n");
 	}
-	printf("-----------------\t\t-----------------\n");
+	printf("-----------------\t\t\t-----------------\n");
 	printf("\tA\t\t\t\tB\n\n");
 }
 
@@ -130,7 +130,7 @@ int	main(int argc, char *argv[])
 	stack_a = initial_set(argv);
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	printer(stack_a, stack_b);
-	while (!check(stack_a))
+	if (!check(stack_a) && !stack_b->top)
 	{
 		printf("stack is not sorted\n");
 		printf("searching for a solution\n");

@@ -12,7 +12,7 @@
 
 #include "sorts.h"
 
-int	nearly_sorted(t_stack *stack)
+int	is_nearly(t_stack *stack)
 {
 	t_node	*node;
 	int		block;
@@ -51,40 +51,18 @@ static char	*next_nearly(t_stack *stack, int nearly)
 		return ("rotate");
 }
 
-int	sorting_nearly(t_stack *stack_a, t_stack *stack_b,
-	int nearly_a, int nearly_b)
+int	nearly_sort(t_stack *stack, int nearly)
 {
 	char	*move_a;
-	char	*move_b;
 	int		count;
 
 	count = 0;
-	move_a = next_nearly(stack_a, nearly_a);
+	move_a = next_nearly(stack, nearly);
 	printf("move_a: %s\n", move_a);
-	move_b = next_nearly(stack_b, nearly_b);
-	printf("move_b: %s\n", move_b);
-	while (!check(stack_a) || !check(stack_b))
+	while (!check(stack))
 	{
-		move_a = next_nearly(stack_a, nearly_a);
-		move_b = next_nearly(stack_b, nearly_b);
-		if (move_a && move_b && !ft_strncmp(move_a, move_b, 7))
-		{
-			if (same_moving(stack_a, stack_b, move_a))
-				count++;
-		}
-		else
-		{
-			if (moving(stack_a, move_a, 'a'))
-			{
-				printer(stack_a, stack_b);
-				count++;
-			}
-			if (moving(stack_b, move_b, 'b'))
-			{
-				printer(stack_a, stack_b);
-				count++;
-			}
-		}
+		moving(stack, move_a, 'a');
+		count++;
 	}
 	return (count);
 }

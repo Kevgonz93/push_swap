@@ -12,51 +12,84 @@
 
 #include "sorts.h"
 
-static int	mid_low_high(t_stack *stack_a, t_stack *stack_b)
+static char	**mid_low_high(void)
 {
-	printf("sa\n");
-	swap(stack_a);
-	printer(stack_a, stack_b);
-	return (1);
+	char	**move;
+
+	move = ft_calloc(3, sizeof(char *));
+	move[0] = ft_strdup("swap");
+	move[1] = NULL;
+	move[2] = NULL;
+	return (move);
 }
 
-static int	mid_high_low(t_stack *stack_a, t_stack *stack_b)
+static char	**mid_high_low(void)
 {
-	printf("rra\n");
-	reverse(stack_a);
-	printer(stack_a, stack_b);
-	return (1);
+	char	**move;
+
+	move = ft_calloc(3, sizeof(char *));
+	move[0] = ft_strdup("reverse");
+	move[1] = NULL;
+	move[2] = NULL;
+	return (move);
 }
 
-static int	high_low_mid(t_stack *stack_a, t_stack *stack_b)
+static char	**high_low_mid(void)
 {
-	printf("ra\n");
-	rotate(stack_a);
-	printer(stack_a, stack_b);
-	return (1);
+	char	**move;
+
+	move = ft_calloc(3, sizeof(char *));
+	move[0] = ft_strdup("rotate");
+	move[1] = NULL;
+	move[2] = NULL;
+	return (move);
 }
 
-int	short_sorting(t_stack *stack_a, t_stack *stack_b)
+static char	**next_shorting(t_stack *stack_a)
 {
-	t_node	*top;
-	t_node	*bottom;
+	int		top;
+	int		mid;
+	int		bottom;
+	char	**move;
 
-	top = stack_a->top;
-	bottom = ft_lstlast(stack_a);
-	if (top->value > top->next->value && top->next->value < bottom->value
-		&& top->value > bottom->value)
-		return (high_low_mid(stack_a, stack_b));
-	else if (top->value > bottom->value && top->value > top->next->value
-		&& top->next->value > bottom->value)
-		return (high_low_mid(stack_a, stack_b)
-			+ mid_low_high(stack_a, stack_b));
-	else if (top->value < top->next->value && top->value > bottom->value
-		&& top->next->value > bottom->value)
-		return (mid_high_low(stack_a, stack_b));
-	else if (top->value < top->next->value && top->value < bottom->value
-		&& top->next->value > bottom->value)
-		return (mid_low_high(stack_a, stack_b)
-			+ high_low_mid(stack_a, stack_b));
+	top = stack_a->top->value;
+	mid = stack_a->top->next->value;
+	bottom = ft_lstlast(stack_a)->value;
+	if (top > mid && mid < bottom && top > bottom)
+		move = high_low_mid();
+	else if (top > bottom && top > mid && mid > bottom)
+	{
+		move = high_low_mid();
+		move[1] = ft_strdup("swap");
+	}
+	else if (top < mid && top > bottom && mid > bottom)
+		move = mid_high_low();
+	else if (top < mid && top < bottom && mid > bottom)
+	{
+		move = mid_low_high();
+		move[1] = ft_strdup("rotate");
+	}
 	else
-		return (mid_low_high(stack_a, stack_b));
+		move = mid_low_high();
+	return (move);
+}
+
+int	short_sorting(t_stack *stack_a)
+{
+	char	**move_a;
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	if (!check(stack_a))
+		move_a = next_shorting(stack_a);
+	else
+		return (0);
+	while (move_a[i] != NULL)
+	{
+		count += moving(stack_a, move_a[i], 'a');
+		i++;
+	}
+	return (count);
 }

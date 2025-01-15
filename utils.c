@@ -14,19 +14,53 @@
 #include "moves/moves.h"
 #include "sorts/sorts.h"
 
-int	moving_to_b(t_stack *stack_a, t_stack *stack_b)
+void	print_temp(t_stack *temp)
+{
+	t_node	*node;
+	int		i;
+
+	i = 0;
+	node = temp->top;
+	while (node)
+	{
+		printf("%d (%d)\n", node->value, i++);
+		node = node->next;
+	}
+}
+
+int	moving_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	size;
 
 	i = 0;
-	size = ft_lstsize(stack_a);
+	size = ft_lstsize(stack_b);
 	while (i < 2 && size != 3)
+	{
+		pa(stack_a, stack_b);
+		printer(stack_a, stack_b);
+		i++;
+		size = ft_lstsize(stack_b);
+	}
+	return (i);
+}
+
+int	moving_to_b(t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
+	int	size;
+	int	nearly_sorted_a;
+
+	i = 0;
+	size = ft_lstsize(stack_a);
+	nearly_sorted_a = is_nearly(stack_a);
+	while (i < 2 && size != 3 && nearly_sorted_a == 0 && stack_a->top->value > ft_lstlast(stack_a)->value)
 	{
 		pb(stack_a, stack_b);
 		printer(stack_a, stack_b);
 		i++;
 		size = ft_lstsize(stack_a);
+		nearly_sorted_a = is_nearly(stack_a);
 	}
 	return (i);
 }

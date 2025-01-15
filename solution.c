@@ -67,111 +67,130 @@ int	*get_solution(t_stack *stack)
 	return (solution);
 }
 
-int	search_index(t_stack *stack, int *solution)
+int	search_index(int node, int *solution)
 {
-	t_node	*node;
 	int		i;
 
-	node = stack->top;
 	i = 0;
 	while (node)
 	{
-		if (node->value == solution[i])
+		if (node == solution[i])
 			return (i);
 		i++;
 	}
 	return (0);
 }
 
-int	sort_stack(t_stack *stack)
+int	sort_stack(t_stack *stack_a, t_stack *stack_b, char c)
 {
-	char	*move;
-	int		count;
+	int	count;
 
 	count = 0;
-	move = next_move(stack);
-	while (!check(stack))
+	update_index(stack_a, stack_b);
+	if (c == 'a')
 	{
-		count += moving(stack, move, 'a');
-		move = next_move(stack);
+		printf("sorting a\n");
+		if (ft_lstsize(stack_a) == 3)
+			count += short_sorting(stack_a);
+		else
+			count += large_sorting(stack_a);
+	}
+	else
+	{
+		printf("sorting b\n");
+		if (ft_lstsize(stack_b) == 3)
+			count += short_sorting(stack_b);
+		else
+			count += large_sorting(stack_b);
 	}
 	return (count);
 }
 
 char	*next_move(t_stack *stack)
 {
-	t_node	*node;
-	t_node	*initial_bottom;
+	int		node;
+	int		bottom;
 	int		*solution;
 	int		index;
+	int		size;
 
-	node = stack->top;
+	node = stack->top->value;
 	solution = get_solution(stack);
-	index = search_index(stack, solution);
-	initial_bottom = ft_lstlast(stack);
+	index = search_index(node, solution);
+	size = ft_lstsize(stack);
+	printf("index: %d\n", index);
+	printf("size of stack: %d\n", size);
+	bottom = ft_lstlast(stack)->value;
 	if (!stack->top || !stack->top->next || check(stack) == 1)
 		return (free(solution), "nothing");
-	if (node->value > initial_bottom->value)
+	if (node > bottom || index > size / 2)
 		return (free(solution), "rotate");
-	else if (index <= stack->size / 2)
+	else if (index <= size / 2 && node > stack->top->next->value)
 		return (free(solution), "swap");
-	return (free(solution), "nothing");
+	return (free(solution), "reverse");
 }
 
-int	move_to_top(t_stack *stack_a, int index, t_stack *stack_b)
+int	move_to_top(t_stack *stack, int index, char c)
 {
 	int	count;
-	int	i;
+	int	size;
 
-	i = 0;
 	count = 0;
-	while (i < index)
+	size = ft_lstsize(stack);
+	printf("moving to top\n");
+	printf("index: %d\n", index);
+	if (index <= size / 2)
 	{
-		if (i <= stack_a->size / 2)
+		while (index > 0)
 		{
-			printf("ra\n");
-			rotate(stack_a);
-			printer(stack_a, stack_b);
+			if (c == 'a')
+				printf("ra\n");
+			else
+				printf("rb\n");
+			rotate(stack);
 			count++;
+			index--;
 		}
-		else
+	}
+	else
+	{
+		while (index < size)
 		{
-			printf("rra\n");
-			reverse(stack_a);
+			if (c == 'a')
+				printf("rra\n");
+			else
+				printf("rrb\n");
+			reverse(stack);
 			count++;
+			index++;
 		}
-		i++;
 	}
 	return (count);
 }
 
 int	search_solution(t_stack *stack_a, t_stack *stack_b)
 {
-	int	i;
+	int	count;
 	int	size;
 	int	nearly_sorted_a;
 
-	i = 0;
+	count = 0;
 	size = ft_lstsize(stack_a);
+	nearly_sorted_a = is_nearly(stack_a);
 	if (size == 3)
 	{
-		i += short_sorting(stack_a, stack_b);
 		printf("short sorting\n");
-		printf ("%d\n", i);
-		return (i);
+		count += short_sorting(stack_a);
 	}
-	nearly_sorted_a = nearly_sorted(stack_a);
-	if (nearly_sorted_a != 0)
+	else if (nearly_sorted_a != 0)
 	{
 		printf("nearly sorted\n");
-		i += sorting_nearly(stack_a, stack_b,
-				nearly_sorted_a, nearly_sorted(stack_b));
+		count += nearly_sort(stack_a, nearly_sorted_a);
 	}
 	else
 	{
-		i += large_sorting(stack_a, stack_b);
 		printf("large sorting\n");
-		return (i);
+		count += large_sort(stack_a, stack_b);
 	}
-	return (i);
+	return (count);
 }

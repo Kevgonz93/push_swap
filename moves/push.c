@@ -22,7 +22,7 @@ int	pa(t_stack *stack_a, t_stack *stack_b)
 	stack_b->top = node->next;
 	node->next = stack_a->top;
 	stack_a->top = node;
-	return (printf("pa\n"));
+	return (printf("pa\n"), 1);
 }
 
 int	pb(t_stack *stack_a, t_stack *stack_b)
@@ -35,5 +35,5 @@ int	pb(t_stack *stack_a, t_stack *stack_b)
 	stack_a->top = node->next;
 	node->next = stack_b->top;
 	stack_b->top = node;
-	return (printf("pb\n"));
+	return (printf("pb\n"), 1);
 }
