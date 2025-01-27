@@ -42,6 +42,12 @@ void	doble_reverse(t_stack *stack_a, t_stack *stack_b, t_node *cheapest)
 	while (stack_b->top != cheapest->target && stack_a->top != cheapest)
 	{
 		rrr(stack_a, stack_b, true);
+<<<<<<< HEAD
 		update_stack(stack_a, stack_b);
 	}
+=======
+	}
+	update_index(stack_a);
+	update_index(stack_b);
+>>>>>>> refs/remotes/origin/main
 }

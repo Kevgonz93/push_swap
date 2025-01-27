@@ -14,7 +14,10 @@ static t_node	*create_node(int n, t_node *prev, int index)
 	node->next = 0;
 	if (prev)
 		prev->next = node;
+<<<<<<< HEAD
+=======
 	// print_node_values(node);
+>>>>>>> refs/remotes/origin/main
 	return (node);
 }
 

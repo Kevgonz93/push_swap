@@ -21,6 +21,13 @@ void	pre_push(t_stack *stack, t_node *top_target, char c)
 	}
 }
 
+<<<<<<< HEAD
+void	update_target_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	update_targets_a(stack_a, stack_b);
+	if (stack_b->top)
+		update_targets_b(stack_b, stack_a);
+=======
 int	count_to_top(t_stack *stack, t_node *node)
 {
 	int		count;
@@ -35,8 +42,40 @@ int	count_to_top(t_stack *stack, t_node *node)
 void	update_cost_a(t_stack *stack_init, t_stack *stack_last)
 {
 	t_node	*node;
+	int		cost_node;
+	int		cost_target;
+	int		count_a;
+	int		count_b;
+
+	count_a = count_to_top(stack_init, stack_last->top);
+	count_b = count_to_top(stack_last, stack_init->top);
+	node = stack_init->top;
+	while (node)
+	{
+		if (stack_init->size >= stack_last->size)
+		{
+			if ((!node->second_half && !node->target->second_half)
+				|| (node->second_half && node->target->second_half))
+			{
+				if (count_a > count_b)
+					node->cost_push = count_a;
+				else
+					node->cost_push = count_b;
+			}
+			else if ()
+
+			
+		}
+		node->cost_push++;
+		node = node->next;
+	}
+}
+
+void	update_cost_b(t_stack *stack_init, t_stack *stack_last)
+{
 	int		size_a;
 	int		size_b;
+	t_node	*node;
 
 	size_a = stack_init->size;
 	size_b = stack_last->size;
@@ -46,10 +85,11 @@ void	update_cost_a(t_stack *stack_init, t_stack *stack_last)
 		node->cost_push = node->index;
 		if (node->second_half)
 			node->cost_push = size_a - node->index;
-		if (!node->target->second_half)
+		if (node->target->second_half)
 			node->cost_push += node->target->index;
 		else
 			node->cost_push += size_b - node->target->index;
+		node->cost_push++;
 		node = node->next;
 	}
 }
@@ -66,10 +106,10 @@ void	update_index(t_stack *stack)
 	while (node)
 	{
 		node->index = i;
-		if (i <= mid)
-			node->second_half = false;
-		else
+		if (i > mid)
 			node->second_half = true;
+		else
+			node->second_half = false;
 		node = node->next;
 		i++;
 	}
@@ -103,8 +143,6 @@ void	update_targets_a(t_stack *stack_ini, t_stack *stack_last)
 	t_node	*target;
 	long	best;
 
-	if (!stack_last->top)
-		return ;
 	node = stack_ini->top;
 	while (node)
 	{
@@ -180,15 +218,19 @@ void	update_cheapest(t_stack *stack)
 
 void	update_target_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	update_targets_a(stack_a, stack_b);
 	if (stack_b->top)
+	{
+		update_targets_a(stack_a, stack_b);
 		update_targets_b(stack_b, stack_a);
+	}
+>>>>>>> refs/remotes/origin/main
 }
 
 void	update_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	update_index(stack_a);
 	if (stack_b->top)
+<<<<<<< HEAD
 	{
 		update_index(stack_b);
 	}
@@ -200,4 +242,15 @@ void	update_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		update_cheapest(stack_b);
 	}
+=======
+		update_index(stack_b);
+	update_size(stack_a, stack_b);
+	update_target_stack(stack_a, stack_b);
+	update_cost_a(stack_a, stack_b);
+	if (stack_b->top)
+		update_cost_b(stack_b, stack_a);
+	update_cheapest(stack_a);
+	if (stack_b->top)
+		update_cheapest(stack_b);
+>>>>>>> refs/remotes/origin/main
 }

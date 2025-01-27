@@ -31,6 +31,10 @@ void	pb(t_stack *stack_a, t_stack *stack_b, bool print)
 	if (print)
 	{
 		printf("pb\n");
+<<<<<<< HEAD
+=======
+		update_stack(stack_a, stack_b);
+>>>>>>> refs/remotes/origin/main
 	}
 }
 

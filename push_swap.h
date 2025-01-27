@@ -28,6 +28,9 @@ int		check_sorted(t_stack *stack, char c);
 void	print_node_values(t_node *node);
 void	print_stack_values(t_stack *stack);
 void	printer(t_stack *stack_a, t_stack *stack_b);
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/main
 
 #endif
