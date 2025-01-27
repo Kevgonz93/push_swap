@@ -1,39 +1,46 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:06:49 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/12/05 15:06:50 by kegonzal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "moves.h"
 
-#include "../push_swap.h"
-
-int	pa(t_stack *stack_a, t_stack *stack_b)
+static void	push(t_stack *stack_dst, t_stack *stack_src)
 {
-	t_node	*node;
+	t_node	*temp;
 
-	if (!stack_b->top)
-		return (0);
-	node = stack_b->top;
-	stack_b->top = node->next;
-	node->next = stack_a->top;
-	stack_a->top = node;
-	return (printf("pa\n"), 1);
+	if (!stack_src->top)
+		return ;
+	temp = stack_src->top;
+	stack_src->top = stack_src->top->next;
+	if (stack_src->top)
+		stack_src->top->prev = NULL;
+	temp->prev = NULL;
+	if (!stack_dst->top)
+	{
+		stack_dst->top = temp;
+		temp->next = NULL;
+	}
+	else
+	{
+		temp->next = stack_dst->top;
+		temp->next->prev = temp;
+		stack_dst->top = temp;
+	}
 }
 
-int	pb(t_stack *stack_a, t_stack *stack_b)
+// MOVE THE FIRST NODE OF STACK_A TO STACK_B
+void	pb(t_stack *stack_a, t_stack *stack_b, bool print)
 {
-	t_node	*node;
+	push(stack_b, stack_a);
+	if (print)
+	{
+		printf("pb\n");
+	}
+}
 
-	if (!stack_a->top)
-		return (0);
-	node = stack_a->top;
-	stack_a->top = node->next;
-	node->next = stack_b->top;
-	stack_b->top = node;
-	return (printf("pb\n"), 1);
+// MOVE THE FIRST NODE OF STACK_B TO STACK_A
+void	pa(t_stack *stack_a, t_stack *stack_b, bool print)
+{
+	push(stack_a, stack_b);
+	if (print)
+	{
+		printf("pa\n");
+		update_stack(stack_a, stack_b);
+	}
 }

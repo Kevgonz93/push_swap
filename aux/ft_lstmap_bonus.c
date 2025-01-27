@@ -32,7 +32,7 @@ t_stack	*ft_lstmap(t_node **lst, int *(*f)(int), void (*del)(int))
 		node = ft_lstnew(content);
 		if (!node)
 		{
-			ft_lstclear(list, del);
+			ft_lstclear(list);
 			return (0);
 		}
 		ft_lstadd_back(list, node);

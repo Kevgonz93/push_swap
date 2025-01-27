@@ -1,24 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:08:06 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/12/05 15:08:07 by kegonzal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef TYPES_H
 # define TYPES_H
+
+# include "push_swap.h"
+# include <stdbool.h>
 
 typedef struct s_node
 {
 	int				value;
-	struct s_node	*next;
 	int				index;
-	int				cost;
+	int				cost_push;
+	bool			second_half;
+	bool			cheapest;
+	struct s_node	*target;
+	struct s_node	*next;
+	struct s_node	*prev;
 }	t_node;
 
 typedef struct s_stack

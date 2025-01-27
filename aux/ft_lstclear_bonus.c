@@ -15,19 +15,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_lstclear(t_stack *lst, void (*del)(int))
+void	ft_lstclear(t_stack *lst)
 {
-	t_node	*current;
 	t_node	*obj;
+	t_node	*tmp;
 
-	if (!lst || !lst->top || !del)
+	if (!lst || !lst->top)
 		return ;
-	current = lst->top;
-	while (current)
+	obj = lst->top;
+	while (obj)
 	{
-		obj = current->next;
-		ft_lstdelone(current, del);
-		current = obj;
+		tmp = obj->next;
+		free(obj);
+		obj = tmp;
 	}
-	lst->top = NULL;
+	free(lst);
 }

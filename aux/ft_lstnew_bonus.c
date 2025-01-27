@@ -23,7 +23,7 @@ t_node	*ft_lstnew(int content)
 	if (!node)
 		return (NULL);
 	node->value = content;
-	node->cost = 0;
+	node->cost_push = 0;
 	node->index = 0;
 	node->next = NULL;
 	return (node);

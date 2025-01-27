@@ -1,50 +1,66 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:06:40 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/12/05 15:06:41 by kegonzal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	is_repeat(char *numbers[])
+int	check_data(char *str)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	while (numbers[i])
+	i = 0;
+	while (str[i + 1])
 	{
-		j = i + 1;
-		while (numbers[j])
+		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
+			return (0);
+		if (str[i] == '-' || str[i] == '+')
 		{
-			if (ft_strlen(numbers[i]) == ft_strlen(numbers[j])
-				&& !ft_strncmp(numbers[i], numbers[j], ft_strlen(numbers[i])))
-				return (1);
-			j++;
+			if (!ft_isdigit(str[i + 1]))
+				return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
-int	check(t_stack *stack)
+int	check_duplicates(t_stack *stack)
 {
-	t_node	*node;
+	t_node	*obj;
+	t_node	*tmp;
 
-	node = stack->top;
-	if (!node || !node->next)
-		return (1);
-	while (node->next)
+	obj = stack->top;
+	while (obj)
 	{
-		if (node->value > node->next->value)
-			return (0);
-		node = node->next;
+		tmp = obj->next;
+		while (tmp)
+		{
+			if (obj->value == tmp->value)
+				return (0);
+			tmp = tmp->next;
+		}
+		obj = obj->next;
+	}
+	return (1);
+}
+
+int	check_sorted(t_stack *stack, char c)
+{
+	t_node	*obj;
+
+	obj = stack->top;
+	if (c == 'a')
+	{
+		while (obj)
+		{
+			if (obj->next && obj->value > obj->next->value)
+				return (0);
+			obj = obj->next;
+		}
+	}
+	else
+	{
+		while (obj)
+		{
+			if (obj->next && obj->value < obj->next->value)
+				return (0);
+			obj = obj->next;
+		}
 	}
 	return (1);
 }

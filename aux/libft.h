@@ -12,6 +12,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "../push_swap.h"
 # include "../types.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -68,9 +69,15 @@ t_node	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_front(t_stack *lst, t_node *new);
 void	ft_lstadd_back(t_stack *lst, t_node *new);
 void	ft_lstdelone(t_node *lst, void (*del)(int));
-void	ft_lstclear(t_stack *lst, void (*del)(int));
+void	ft_lstclear(t_stack *lst);
 int		ft_lstsize(t_stack *lst);
 void	ft_lstiter(t_node *lst, void (*f)(int));
 t_stack	*ft_lstmap(t_node **lst, int *(*f)(int), void (*del)(int));
+
+// AUX
+
+long	ft_atol(const char *str);
+void	ft_free_matrix(void **matrix);
+char	**ft_split(const char *s, char c);
 
 #endif

@@ -1,34 +1,47 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:06:40 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/12/05 15:06:41 by kegonzal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "moves.h"
 
-#include "../push_swap.h"
-
+// MOVE THE FIRST NODE TO THE END OF THE STACK
 void	rotate(t_stack *stack)
 {
-	t_node	*first;
 	t_node	*last;
 
 	if (!stack->top || !stack->top->next)
 		return ;
-	first = stack->top;
 	last = ft_lstlast(stack);
-	stack->top = first->next;
-	first->next = NULL;
-	last->next = first;
+	last->next = stack->top;
+	stack->top = stack->top->next;
+	stack->top->prev = NULL;
+	last->next->prev = last;
+	last->next->next = NULL;
 }
 
-void	rr(t_stack *stack_a, t_stack *stack_b)
+void	ra(t_stack *stack, bool print)
 {
-	printf("rr\n");
+	rotate(stack);
+	if (print)
+		printf("ra\n");
+
+}
+
+void	rb(t_stack *stack, bool print)
+{
+	rotate(stack);
+	if (print)
+		printf("rb\n");
+}
+
+void	rr(t_stack *stack_a, t_stack *stack_b, bool print)
+{
 	rotate(stack_a);
 	rotate(stack_b);
+	if (print)
+		printf("rr\n");
+}
+
+void	doble_rotate(t_stack *stack_a, t_stack *stack_b, t_node *cheapest)
+{
+	while (stack_b->top != cheapest->target && stack_a->top != cheapest)
+		rr(stack_a, stack_b, true);
+	update_index(stack_a);
+	update_index(stack_b);
 }

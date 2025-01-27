@@ -1,32 +1,36 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:09:35 by kegonzal          #+#    #+#             */
-/*   Updated: 2024/12/05 15:09:36 by kegonzal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../push_swap.h"
+#include "moves.h"
 
 void	swap(t_stack *stack)
 {
-	t_node	*first;
-
 	if (!stack->top || !stack->top->next)
 		return ;
-	first = stack->top;
-	stack->top = first->next;
-	first->next = stack->top->next;
-	stack->top->next = first;
+	stack->top = stack->top->next;
+	stack->top->prev->prev = stack->top;
+	stack->top->prev->next = stack->top->next;
+	if (stack->top->next)
+		stack->top->next->prev = stack->top->prev;
+	stack->top->next = stack->top->prev;
+	stack->top->prev = NULL;
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	sa(t_stack *stack, bool print)
 {
-	printf("ss\n");
+	swap(stack);
+	if (print)
+		printf("sa\n");
+}
+
+void	sb(t_stack *stack, bool print)
+{
+	swap(stack);
+	if (print)
+		printf("sb\n");
+}
+
+void	ss(t_stack *stack_a, t_stack *stack_b, bool print)
+{
 	swap(stack_a);
 	swap(stack_b);
+	if (print)
+		printf("ss\n");
 }
