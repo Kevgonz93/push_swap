@@ -25,10 +25,10 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 ## 🛠️ Cómo Compilar y Ejecutar
 
 1. Clona este repositorio:
-
+   ```bash
    git clone https://github.com/Kevgonz93/push_swap.git
    cd push_swap
-
+   ```
 2. Compila el programa utilizando `make`:
    ```bash
    make
@@ -77,18 +77,31 @@ pa
 ## 📂 Estructura del Proyecto
 ```
 📦 push_swap
-├── 📂 src         # Código fuente del programa
-├── 📂 include     # Archivos de cabecera
-├── 📄 Makefile    # Archivo para la compilación
-└── 📄 README.md   # Este documento
+├── 📂 aux           # Funciones auxiliares (libft adaptado)
+├── 📂 moves         # Implementación de las operaciones "push", "swap", "rotate" y "reverse"
+├── 📂 sorts         # Lógica de ordenamiento
+├── checker_mac      # Herramienta para verificar la validez de las operaciones
+├── initial_settings.c # Configuración inicial de las pilas
+├── printers.c       # Funciones para tener una visión gráfica de los stacks.
+├── utils.c          # Funciones generales de utilidad
+├── Makefile         # Archivo para la compilación
+├── README.md        # Este documento
+├── subject.md       # Enunciado en markdown
+└── subject.pdf      # Enunciado del proyecto
 ```
 
 ---
 
 ## 🤝 Contribución
+
 Este proyecto fue desarrollado como parte del programa 42. Si deseas aportar ideas o mejoras, siéntete libre de abrir un issue o un pull request.
 
 ---
 
 ## 📜 Licencia
-Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+
+Este proyecto se distribuye bajo la licencia MIT.
+
+## 🧑‍💻 Autor
+
+[Kevin Gonzales](https://github.com/Kevgonz93)
