@@ -20,10 +20,6 @@ void	ra(t_stack *stack, bool print)
 	rotate(stack);
 	if (print)
 		printf("ra\n");
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 }
 
 void	rb(t_stack *stack, bool print)
@@ -44,13 +40,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b, bool print)
 void	doble_rotate(t_stack *stack_a, t_stack *stack_b, t_node *cheapest)
 {
 	while (stack_b->top != cheapest->target && stack_a->top != cheapest)
-<<<<<<< HEAD
 		rr(stack_a, stack_b, true);
-=======
-	{
-		rr(stack_a, stack_b, true);
-	}
->>>>>>> refs/remotes/origin/main
 	update_index(stack_a);
 	update_index(stack_b);
 }

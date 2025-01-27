@@ -29,13 +29,7 @@ void	pb(t_stack *stack_a, t_stack *stack_b, bool print)
 {
 	push(stack_b, stack_a);
 	if (print)
-	{
 		printf("pb\n");
-<<<<<<< HEAD
-=======
-		update_stack(stack_a, stack_b);
->>>>>>> refs/remotes/origin/main
-	}
 }
 
 // MOVE THE FIRST NODE OF STACK_B TO STACK_A
@@ -43,8 +37,5 @@ void	pa(t_stack *stack_a, t_stack *stack_b, bool print)
 {
 	push(stack_a, stack_b);
 	if (print)
-	{
 		printf("pa\n");
-		update_stack(stack_a, stack_b);
-	}
 }

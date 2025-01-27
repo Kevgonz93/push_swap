@@ -22,10 +22,6 @@ t_node	*min_value(t_stack *stack)
 	return (min_node);
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 t_node	*max_value(t_stack *stack)
 {
 	long	max;

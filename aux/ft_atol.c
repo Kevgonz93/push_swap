@@ -20,10 +20,6 @@ long	ft_atol(const char *str)
 
 	result = 0;
 	sign = 1;
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
 	if (*str == '-' || *str == '+')

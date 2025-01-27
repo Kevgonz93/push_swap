@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -11,17 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-=======
->>>>>>> refs/remotes/origin/main
 #include "libft.h"
 
 void	ft_free_matrix(void **matrix)
 {
 	int	i;
 
+	i = 0;
 	if (!matrix)
 		return ;
-	i = 0;
 	while (matrix[i])
 		free(matrix[i++]);
 	free(matrix);
@@ -63,29 +60,14 @@ static char	*word_dup(const char *s, size_t start, size_t end)
 	return (word);
 }
 
-<<<<<<< HEAD
 static void	fill_matrix(const char *s, char c, char **result)
 {
-=======
-char	**ft_split(const char *s, char c)
-{
-	char	**result;
->>>>>>> refs/remotes/origin/main
 	size_t	i;
 	size_t	j;
 	size_t	start;
 
 	i = 0;
 	j = 0;
-<<<<<<< HEAD
-=======
-	start = 0;
-	if (!s)
-		return (NULL);
-	result = (char **)ft_calloc(sizeof(char *), (count_int(s, c) + 1));
-	if (!result)
-		return (NULL);
->>>>>>> refs/remotes/origin/main
 	while (s[i])
 	{
 		if (s[i] != c)
@@ -97,18 +79,13 @@ char	**ft_split(const char *s, char c)
 			if (!result[j])
 			{
 				ft_free_matrix((void **)result);
-<<<<<<< HEAD
 				return ;
-=======
-				return (NULL);
->>>>>>> refs/remotes/origin/main
 			}
 			j++;
 		}
 		else
 			i++;
 	}
-<<<<<<< HEAD
 }
 
 char	**ft_split(const char *s, char c)
@@ -121,8 +98,5 @@ char	**ft_split(const char *s, char c)
 	if (!result)
 		return (NULL);
 	fill_matrix(s, c, result);
-=======
-	result[j] = NULL;
->>>>>>> refs/remotes/origin/main
 	return (result);
 }
