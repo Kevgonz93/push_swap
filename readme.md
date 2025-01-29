@@ -50,16 +50,17 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 
 ## 📊 Pruebas y Resultados
 
-### Tipos de Entrada posibles
+### Tipos de entradas posibles
 
+1. Con variable:
 ```bash
     ARG="4 67 3 87 23"; ./push_swap $ARG
 ```
-
+2. Con varios argumentos:
 ```bash
     ./push_swap 4 67 3 87 23
 ```
-
+3. Con un sólo argumento (como una cadena):
 ```bash
     ./push_swap "4 67 3 87 23"
 ```
