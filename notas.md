@@ -1,14 +1,4 @@
-# PUSH_SWAP
-
-## Tipos de Entrada posibles
-
-    ARG="4 67 3 87 23"; ./push_swap $ARG
-
-    ./push_swap 4 67 3 87 23
-
-    ./push_swap "4 67 3 87 23"
-
-## TESTS
+# PUSH_SWAP's TESTS
 
 - 10 números:
 
@@ -34,6 +24,3 @@
 
   167050 / 48391 / 5665
 
-## LOCAL
-
-    cd Library/Mobile\ Documents/com~apple~CloudDocs/Cursos/42\ Madrid/Cursus/push_swap

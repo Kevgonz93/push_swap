@@ -49,6 +49,22 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 ---
 
 ## 📊 Pruebas y Resultados
+
+### Tipos de Entrada posibles
+
+```bash
+    ARG="4 67 3 87 23"; ./push_swap $ARG
+```
+
+```bash
+    ./push_swap 4 67 3 87 23
+```
+
+```bash
+    ./push_swap "4 67 3 87 23"
+```
+
+
 ### Ejemplo de ejecución:
 ```bash
 $ ./push_swap "4 3 2 1"
@@ -83,17 +99,24 @@ OK
 ## 📂 Estructura del Proyecto
 ```
 📦 push_swap
-├── 📂 aux           # Funciones auxiliares (libft adaptado)
-├── 📂 moves         # Implementación de las operaciones "push", "swap", "rotate" y "reverse"
-├── 📂 sorts         # Lógica de ordenamiento
-├── checker_mac      # Herramienta para verificar la validez de las operaciones
+├── 📂 aux             # Funciones auxiliares (libft adaptado)
+├── 📂 moves           # Implementación de las operaciones "push", "swap", "rotate" y "reverse"
+├── 📂 sorts           # Lógica de ordenamiento
+├── checker_Mac        # Herramienta para verificar la validez de las operaciones en Mac
+├── checker_linux      # Herramienta para verificar la validez de las operaciones en Linux
+├── checkers.c         # Funciones validadoras
 ├── initial_settings.c # Configuración inicial de las pilas
-├── printers.c       # Funciones para tener una visión gráfica de los stacks.
-├── utils.c          # Funciones generales de utilidad
-├── Makefile         # Archivo para la compilación
-├── README.md        # Este documento
-├── subject.md       # Enunciado en markdown
-└── subject.pdf      # Enunciado del proyecto en pdf
+├── main.c             # Función main
+├── Makefile           # Archivo para la compilación
+├── notas.md           # Registro de tests realizados durante la optimización del algoritmo
+├── printers.c         # Funciones para tener una visión gráfica de los stacks.
+├── push_swap.h        # Archivo de cabecera con las funciones principales
+├── README.md          # Este documento
+├── subject.md         # Enunciado en markdown
+├── subject.pdf        # Enunciado en pdf
+├── types.h            # Archivo de cabecera con las estructuras
+└── utils.c            # Funciones generales de utilidad
+ 
 ```
 
 ---
