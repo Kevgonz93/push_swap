@@ -1,4 +1,4 @@
-# Push_swap
+# Push_swap 
 
 Push_swap es un proyecto del programa 42 que consiste en desarrollar un programa para ordenar una pila de números enteros utilizando un conjunto de instrucciones específicas y optimizando el número de movimientos.
 
@@ -61,6 +61,12 @@ pa
 pa
 ```
 
+### Ejemplo de uso de checker
+```bash
+$ ./push_swap "4 3 2 1" | ./checker_Mac "4 3 2 1"
+OK
+```
+
 ### Estadísticas del Proyecto:
 | Números | Operaciones Máximas |
 |---------|---------------------|
@@ -87,20 +93,16 @@ pa
 ├── Makefile         # Archivo para la compilación
 ├── README.md        # Este documento
 ├── subject.md       # Enunciado en markdown
-└── subject.pdf      # Enunciado del proyecto
+└── subject.pdf      # Enunciado del proyecto en pdf
 ```
-
----
-
-## 🤝 Contribución
-
-Este proyecto fue desarrollado como parte del programa 42. Si deseas aportar ideas o mejoras, siéntete libre de abrir un issue o un pull request.
 
 ---
 
 ## 📜 Licencia
 
 Este proyecto se distribuye bajo la licencia MIT.
+
+---
 
 ## 🧑‍💻 Autor
 
