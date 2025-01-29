@@ -1,6 +1,42 @@
-# Push_swap 
+# Push_swap - 42 Project
 
-Push_swap es un proyecto del programa 42 que consiste en desarrollar un programa para ordenar una pila de números enteros utilizando un conjunto de instrucciones específicas y optimizando el número de movimientos.
+## 📜 Descripción
+
+**Push_swap** es un proyecto del programa 42 que consiste en desarrollar un programa para ordenar una pila de números enteros utilizando un conjunto de instrucciones específicas y optimizando el número de movimientos.
+
+---
+
+## 📋 Requisitos
+
+Antes de compilar y ejecutar el proyecto, asegúrate de tener:
+
+- 🛠️ **`gcc`**: Compilador de C.
+- 🛠️ **`make`**: Herramienta de construcción.
+- 🖥️ **Sistema operativo**: Unix o Mac.
+
+---
+
+## 🛠️ Cómo Compilar y Ejecutar
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/Kevgonz93/push_swap.git
+   ```
+
+2. Navega al directorio del proyecto:
+   ```bash
+   cd push_swap
+   ```   
+
+3. Compila el programa utilizando `make`:
+   ```bash
+   make
+   ```
+
+4. Ejecuta el programa con una lista de números:
+   ```bash
+   ./push_swap "4 67 3 87 23"
+   ```
 
 ---
 
@@ -12,34 +48,6 @@ Push_swap es un proyecto del programa 42 que consiste en desarrollar un programa
 
 ---
 
-## 📋 Requisitos Previos
-
-Antes de compilar y ejecutar el proyecto, asegúrate de tener:
-
-- 🛠️ **`gcc`**: Compilador de C.
-- 🛠️ **`make`**: Herramienta de construcción.
-- 🖥️ **Sistema operativo**: Unix o similar.
-
----
-
-## 🛠️ Cómo Compilar y Ejecutar
-
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/Kevgonz93/push_swap.git
-   cd push_swap
-   ```
-2. Compila el programa utilizando `make`:
-   ```bash
-   make
-   ```
-3. Ejecuta el programa con una lista de números:
-   ```bash
-   ./push_swap "4 67 3 87 23"
-   ```
-
----
-
 ## 🧠 Estrategia de Solución
 
 🔍 **División en bloques**: Los números se dividen en bloques más pequeños para facilitar el manejo.<br>
@@ -48,7 +56,7 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 
 ---
 
-## 📊 Pruebas y Resultados
+## 🧪 Pruebas
 
 ### Tipos de entradas posibles
 
@@ -119,12 +127,6 @@ OK
 └── utils.c            # Funciones generales de utilidad
  
 ```
-
----
-
-## 📜 Licencia
-
-Este proyecto se distribuye bajo la licencia MIT.
 
 ---
 
