@@ -52,12 +52,14 @@ static int	*numbers(char **nbrs, int size)
 		if (!check_data(nbrs[i]))
 		{
 			free(numbers);
+			printf("Error\n");
 			exit(1);
 		}
 		n = ft_atol(nbrs[i]);
 		if (n > INT_MAX || n < INT_MIN)
 		{
 			free(numbers);
+			printf("Error\n");
 			exit(1);
 		}
 		numbers[i++] = (int)n;
