@@ -78,7 +78,12 @@ t_stack	*stack_init(char **nbrs)
 		i++;
 	num = numbers(nbrs, i);
 	stack = full_matrix(num, i);
-	i = 0;
+	if (!check_duplicates(stack))
+	{
+		free(num);
+		printf("Error\n");
+		exit(1);
+	}
 	free(num);
 	return (stack);
 }
