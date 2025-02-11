@@ -11,6 +11,12 @@ int	main(int argc, char *argv[])
 	{
 		argv = ft_split(argv[1], ' ');
 		stack_a = stack_init(argv);
+		ft_free_matrix((void **)argv);
+		if (!stack_a)
+		{
+			ft_lstclear(stack_a);
+			exit(1);	
+		}
 	}
 	else
 		stack_a = stack_init(argv + 1);

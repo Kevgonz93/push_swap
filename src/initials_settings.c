@@ -60,7 +60,7 @@ static int	*numbers(char **nbrs, int size)
 		{
 			free(numbers);
 			printf("Error\n");
-			exit(1);
+			return (NULL);
 		}
 		numbers[i++] = (int)n;
 	}
@@ -77,13 +77,15 @@ t_stack	*stack_init(char **nbrs)
 	while (nbrs[i])
 		i++;
 	num = numbers(nbrs, i);
+	if (!num)
+		return (NULL);
 	stack = full_matrix(num, i);
 	if (!check_duplicates(stack))
 	{
 		ft_lstclear(stack);
 		free(num);
 		printf("Error\n");
-		exit(1);
+		return (NULL);
 	}
 	free(num);
 	return (stack);
