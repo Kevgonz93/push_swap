@@ -3,7 +3,7 @@
 
 # include "../aux/libft.h"
 # include "../moves/moves.h"
-# include "../types.h"
+# include "../src/types.h"
 # include "../push_swap.h"
 
 // SHORT SORT.C

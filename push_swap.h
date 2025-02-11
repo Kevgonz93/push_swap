@@ -4,7 +4,7 @@
 # include "aux/libft.h"
 # include "moves/moves.h"
 # include "sorts/sort.h"
-# include "types.h"
+# include "src/types.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>

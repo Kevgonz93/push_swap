@@ -5,7 +5,6 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = ft_calloc(1, sizeof(t_stack));
 	if (argc < 2 || argv[1][0] == '\0')
 		return (0);
 	if (argc == 2)
@@ -26,5 +25,5 @@ int	main(int argc, char *argv[])
 			sort_stacks(stack_a, stack_b);
 	}
 	ft_lstclear(stack_a);
-	ft_lstclear(stack_b);
+	free(stack_b);
 }

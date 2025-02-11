@@ -13,7 +13,7 @@
 # define LIBFT_H
 
 # include "../push_swap.h"
-# include "../types.h"
+# include "../src/types.h"
 # include <stdlib.h>
 # include <stdio.h>
 

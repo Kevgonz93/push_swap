@@ -3,7 +3,7 @@
 
 # include "../push_swap.h"
 # include "../aux/libft.h"
-# include "../types.h"
+# include "../src/types.h"
 
 // SWAP
 

@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static t_node	*create_node(int n, t_node *prev, int index)
 {
@@ -80,6 +80,7 @@ t_stack	*stack_init(char **nbrs)
 	stack = full_matrix(num, i);
 	if (!check_duplicates(stack))
 	{
+		ft_lstclear(stack);
 		free(num);
 		printf("Error\n");
 		exit(1);

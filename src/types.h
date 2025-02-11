@@ -1,7 +1,7 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-# include "push_swap.h"
+#include "../push_swap.h"
 # include <stdbool.h>
 
 typedef struct s_node
