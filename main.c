@@ -12,15 +12,16 @@ int	main(int argc, char *argv[])
 		argv = ft_split(argv[1], ' ');
 		stack_a = stack_init(argv);
 		ft_free_matrix((void **)argv);
-		if (!stack_a)
-		{
-			ft_lstclear(stack_a);
-			exit(1);	
-		}
 	}
 	else
 		stack_a = stack_init(argv + 1);
+	if (!stack_a)
+	{
+		ft_lstclear(stack_a);
+		exit(1);
+	}
 	stack_b = ft_calloc(1, sizeof(t_stack));
+	printer(stack_a, stack_b);
 	if (!check_sorted(stack_a, 'a'))
 	{
 		if (stack_a->size == 2)
@@ -30,6 +31,7 @@ int	main(int argc, char *argv[])
 		else
 			sort_stacks(stack_a, stack_b);
 	}
+	printer(stack_a, stack_b);
 	ft_lstclear(stack_a);
 	free(stack_b);
 }

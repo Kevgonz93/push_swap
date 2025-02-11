@@ -53,7 +53,7 @@ static int	*numbers(char **nbrs, int size)
 		{
 			free(numbers);
 			printf("Error\n");
-			exit(1);
+			return (0);
 		}
 		n = ft_atol(nbrs[i]);
 		if (n > INT_MAX || n < INT_MIN)
