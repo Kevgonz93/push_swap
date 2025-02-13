@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkers.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kegonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/13 19:55:14 by kegonzal          #+#    #+#             */
+/*   Updated: 2025/02/13 19:55:15 by kegonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	check_data(char *str)
@@ -9,15 +21,13 @@ int	check_data(char *str)
 	{
 		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 			return (0);
-		if (str[i] == '-' || str[i] == '+')
+		if (str[i] == '-' || str[i] == '+' || (str[i] >= '0' && str[i] <= '9'))
 		{
 			if (!ft_isdigit(str[i + 1]))
 				return (0);
 		}
 		i++;
 	}
-	if (!ft_isdigit(str[i]))
-		return (0);
 	return (1);
 }
 
