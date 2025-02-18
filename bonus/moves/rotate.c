@@ -1,16 +1,17 @@
 #include "moves.h"
 
+// FIRST NODE GOES TO THE END
 void	rotate(t_stack *stack)
 {
 	t_node	*node;
 
-	if (stack->size < 2)
+	if (!stack->top || !stack->top->next)
 		return ;
-	node = stack->top;
-	while (node->next)
-		node = node->next;
+	node = ft_lstlast(stack);
 	node->next = stack->top;
 	stack->top = stack->top->next;
+	stack->top->prev = NULL;
+	node->next->prev = node;
 	node->next->next = NULL;
 }
 

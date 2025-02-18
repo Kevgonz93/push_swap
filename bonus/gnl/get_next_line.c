@@ -12,7 +12,6 @@
 
 #include "get_next_line.h"
 
-
 char	*ft_strchr(const char *c, int n)
 {
 	if (!c)

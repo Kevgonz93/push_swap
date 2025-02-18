@@ -1,7 +1,7 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-# include "checker.h"
+# include "../checker.h"
 
 typedef struct s_node
 {

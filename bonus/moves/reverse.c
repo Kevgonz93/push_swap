@@ -1,17 +1,18 @@
 #include "moves.h"
 
+// LAST NODE GOES TO THE BEGINNING
 static void	reverse(t_stack *stack)
 {
 	t_node	*node;
 
-	if (stack->size < 2)
+	if (!stack->top || !stack->top->next)
 		return ;
-	node = stack->top;
-	while (node->next->next)
-		node = node->next;
-	node->next->next = stack->top;
-	stack->top = node->next;
-	node->next = NULL;
+	node = ft_lstlast(stack);
+	node->prev->next = NULL;
+	node->next = stack->top;
+	node->prev = NULL;
+	stack->top = node;
+	node->next->prev = node;
 }
 
 void	rra(t_stack *stack_a, t_stack *stack_b)
