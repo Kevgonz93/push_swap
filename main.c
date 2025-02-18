@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-static void	initiating(int argc, char *argv[], t_stack *stack_a)
+static void	initiating(int argc, char *argv[], t_stack **stack_a)
 {
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		stack_a = stack_init(argv);
+		*stack_a = stack_init(argv);
 		ft_free_matrix((void **)argv);
 	}
 	else
-		stack_a = stack_init(argv + 1);
+		*stack_a = stack_init(argv + 1);
 }
 
 int	main(int argc, char *argv[])
@@ -29,9 +29,10 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	stack_a = NULL;
 	if (argc < 2 || argv[1][0] == '\0')
 		return (0);
-	initiating(argc, argv, stack_a);
+	initiating(argc, argv, &stack_a);
 	if (!stack_a)
 	{
 		ft_lstclear(stack_a);
