@@ -7,7 +7,7 @@ t_stack	*init_stack(int argc, char **args)
 	t_node	*temp;
 	t_node	*node;
 
-	stack = malloc(sizeof(t_stack));
+	stack = ft_calloc(sizeof(t_stack), 1);
 	stack->size = argc - 1;
 	i = 0;
 	temp = ft_lstnew(ft_atoi(args[i]));
@@ -40,7 +40,7 @@ char	**get_args(int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 	else
 	{
-		args = malloc(sizeof(char *) * (argc));
+		args = ft_calloc(sizeof(char *), (argc));
 		if (!args)
 			return (NULL);
 		i = 1;
@@ -59,7 +59,7 @@ static char	**update_moves(char **moves, int i)
 	char	**temp;
 	int		j;
 
-	temp = malloc(sizeof(char *) * (i + 1));
+	temp = ft_calloc(sizeof(char *), (i + 1));
 	if (!temp)
 		return (NULL);
 	j = 0;
@@ -79,7 +79,7 @@ char	**get_moves(void)
 	char	*line;
 	int		i;
 
-	moves = malloc(sizeof(char *) * 50000);
+	moves = ft_calloc(sizeof(char *), 50000);
 	if (!moves)
 		return (NULL);
 	i = 0;

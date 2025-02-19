@@ -7,7 +7,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = malloc(sizeof(t_stack));
+	stack_a = ft_calloc(sizeof(t_stack), 1);
 	args = get_args(argc, argv);
 	if (!args)
 		return (0);
@@ -15,7 +15,7 @@ int	main(int argc, char **argv)
 	free_matrix(args);
 	moves = get_moves();
 	check_moves(moves, stack_a);
-	stack_b = malloc(sizeof(t_stack));
+	stack_b = ft_calloc(sizeof(t_stack), 1);
 	make_moves(moves, stack_a, stack_b);
 	if (is_sorted(stack_a) && stack_b->size == 0)
 		write(1, "OK\n", 3);

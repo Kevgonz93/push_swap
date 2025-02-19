@@ -23,6 +23,7 @@ void	free_stack(t_stack *stack);
 
 // CHECKER.C
 
+void	check_moves(char **moves, t_stack *stack_a);
 int		is_sorted(t_stack *stack);
 
 void	printer(t_stack *stack_a, t_stack *stack_b);
