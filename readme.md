@@ -19,16 +19,19 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 ## 🛠️ Cómo Compilar y Ejecutar
 
 1. Clona este repositorio:
+
    ```bash
    git clone https://github.com/Kevgonz93/push_swap.git
    ```
 
 2. Navega al directorio del proyecto:
+
    ```bash
    cd push_swap
-   ```   
+   ```
 
 3. Compila el programa utilizando `make`:
+
    ```bash
    make
    ```
@@ -61,20 +64,25 @@ Antes de compilar y ejecutar el proyecto, asegúrate de tener:
 ### Tipos de entradas posibles
 
 1. Con variable:
+
 ```bash
     ARG="4 67 3 87 23"; ./push_swap $ARG
 ```
+
 2. Con varios argumentos:
+
 ```bash
     ./push_swap 4 67 3 87 23
 ```
+
 3. Con un sólo argumento (como una cadena):
+
 ```bash
     ./push_swap "4 67 3 87 23"
 ```
 
-
 ### Ejemplo de ejecución:
+
 ```bash
 $ ./push_swap "4 3 2 1"
 ra
@@ -87,15 +95,18 @@ pa
 ```
 
 ### Ejemplo de uso de checker
+
 ```bash
 $ ./push_swap "4 3 2 1" | ./checker_Mac "4 3 2 1"
 OK
 ```
+
 ## Bonus
 
 Para probar "mychecker":
 
 1. Compila el programa utilizando `make bonus`:
+
    ```bash
    make bonus
    ```
@@ -105,14 +116,15 @@ Para probar "mychecker":
    ./push_swap "4 67 3 87 23" | ./mychecker "4 67 3 87 23"
    ```
 
-
 ### Estadísticas del Proyecto:
+
 | Números | Operaciones Máximas |
-|---------|---------------------|
+| ------- | ------------------- |
 | 100     | Menos de 700        |
 | 500     | Menos de 5500       |
 
 ### Casos de Prueba:
+
 - ✅ Listas ya ordenadas.
 - ✅ Listas inversamente ordenadas.
 - ✅ Listas con valores repetidos (cuando permitido).
@@ -120,6 +132,7 @@ Para probar "mychecker":
 ---
 
 ## 📂 Estructura del Proyecto
+
 ```
 📦 push_swap
 ├── 📂 aux             # Funciones auxiliares (libft adaptado)
@@ -128,21 +141,22 @@ Para probar "mychecker":
    ├── 📂 gnl          # Get Next Lina empleado para la realización del bonus
    ├── 📂 moves        # Funciones con los movimientos del push_swap
    ├── 📂 src          # Funciones basicas para el bonus
-   ├── checker.h       # Archivo de cabecera con las funciones principales 
+   ├── checker.h       # Archivo de cabecera con las funciones principales
    └── main.c          # Función main
 ├── 📂 moves           # Implementación de las operaciones "push", "swap", "rotate" y "reverse"
 ├── 📂 sorts           # Lógica de ordenamiento
-├── checker_Mac        # Herramienta para verificar la validez de las operaciones en Mac
+├── 📂 src             # Funciones básicas para el proyecto
 ├── checker_linux      # Herramienta para verificar la validez de las operaciones en Linux
+├── checker_Mac        # Herramienta para verificar la validez de las operaciones en Mac
 ├── main.c             # Función main
 ├── Makefile           # Archivo para la compilación
 ├── notas.md           # Registro de tests realizados durante la optimización del algoritmo
-├── printers.c         # Funciones para tener una visión gráfica de los stacks.
+├── printers.c         # Funciones para tener una visión de los stacks.
 ├── push_swap.h        # Archivo de cabecera con las funciones principales
 ├── README.md          # Este documento
 ├── subject.md         # Enunciado en markdown
 └── subject.pdf        # Enunciado en pdf
- 
+
 ```
 
 ---
