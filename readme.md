@@ -91,6 +91,20 @@ pa
 $ ./push_swap "4 3 2 1" | ./checker_Mac "4 3 2 1"
 OK
 ```
+## Bonus
+
+Para probar "mychecker":
+
+1. Compila el programa utilizando `make bonus`:
+   ```bash
+   make bonus
+   ```
+
+2. Ejecuta el programa con una lista de números:
+   ```bash
+   ./push_swap "4 67 3 87 23" | ./mychecker "4 67 3 87 23"
+   ```
+
 
 ### Estadísticas del Proyecto:
 | Números | Operaciones Máximas |
@@ -109,12 +123,17 @@ OK
 ```
 📦 push_swap
 ├── 📂 aux             # Funciones auxiliares (libft adaptado)
+├── 📂 bonus           # Programa parte del bonus de push_swap
+   ├── 📂 aux          # Funciones auxiliares (libft adaptado)
+   ├── 📂 gnl          # Get Next Lina empleado para la realización del bonus
+   ├── 📂 moves        # Funciones con los movimientos del push_swap
+   ├── 📂 src          # Funciones basicas para el bonus
+   ├── checker.h       # Archivo de cabecera con las funciones principales 
+   └── main.c          # Función main
 ├── 📂 moves           # Implementación de las operaciones "push", "swap", "rotate" y "reverse"
 ├── 📂 sorts           # Lógica de ordenamiento
 ├── checker_Mac        # Herramienta para verificar la validez de las operaciones en Mac
 ├── checker_linux      # Herramienta para verificar la validez de las operaciones en Linux
-├── checkers.c         # Funciones validadoras
-├── initial_settings.c # Configuración inicial de las pilas
 ├── main.c             # Función main
 ├── Makefile           # Archivo para la compilación
 ├── notas.md           # Registro de tests realizados durante la optimización del algoritmo
@@ -122,9 +141,7 @@ OK
 ├── push_swap.h        # Archivo de cabecera con las funciones principales
 ├── README.md          # Este documento
 ├── subject.md         # Enunciado en markdown
-├── subject.pdf        # Enunciado en pdf
-├── types.h            # Archivo de cabecera con las estructuras
-└── utils.c            # Funciones generales de utilidad
+└── subject.pdf        # Enunciado en pdf
  
 ```
 
